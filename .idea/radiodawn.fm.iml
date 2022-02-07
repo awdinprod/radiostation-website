@@ -4,5 +4,14 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="jquery-3.6.0" level="application" />
+    <orderEntry type="library" name="jplayer" level="application" />
+    <orderEntry type="library" name="a696c17afb" level="application" />
+    <orderEntry type="library" name="normalize" level="application" />
+    <orderEntry type="library" name="jplayer.blue.monday" level="application" />
+    <orderEntry type="library" name="html5shiv" level="application" />
+    <orderEntry type="library" name="jquery-1.9.1" level="application" />
+    <orderEntry type="library" name="jquery.jplayer" level="application" />
   </component>
 </module>
