@@ -43,13 +43,13 @@ body {
     font-weight: 500;
 }
 
-.column{
+div.column{
     margin: 0;
     padding: 10px 50px 20px;
     overflow: hidden;
 }
 
-.column-podcasts{
+div.column div.podcasts{
     margin-top: 10px;
     float: left;
     height: 800px;
@@ -60,7 +60,7 @@ body {
     color: #6567a8;
 }
 
-.column-chart {
+div.column div.chart{
     margin-top: 10px;
     float: right;
     height: 800px;
@@ -71,7 +71,7 @@ body {
     color: #6567a8;
 }
 
-.column:after{
+div.column:after{
     content: "";
     display: table;
     clear: both;

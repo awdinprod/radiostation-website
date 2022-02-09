@@ -1,6 +1,6 @@
 <?php
-require ('/home/awdinprod/PhpstormProjects/radiodawn.fm/header.php');
+require ('header.php');
 
-require ('/home/awdinprod/PhpstormProjects/radiodawn.fm/mainpage.php');
+require ('mainpage.php');
 
-require ('/home/awdinprod/PhpstormProjects/radiodawn.fm/footer.php');
+require ('footer.php');
