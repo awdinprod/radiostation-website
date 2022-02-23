@@ -1,5 +1,5 @@
 <div class="banner" style="font-size: 30pt;">
-    If you see this text then this banner is now unavailable and sad. <br> But you'll be able to look at the stunning banner pretty soon. Betcha :)
+    If you see this text then this banner is now unavailable and sad. <br> But you'll be able to all cool images here pretty soon. Betcha :)
 </div>
 
 <div class="banner" style="font-size: 30pt; height: 600px; margin-top: 20px;"> I know you would like something to read. <br> We're currently working on it</div>
