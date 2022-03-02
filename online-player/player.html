@@ -32,14 +32,12 @@
     <![endif]-->
     <script>
         "use strict";
-        // Start Web4Radio options
-        let streamName = "DAWN FM"; // Station name
-        let streamAddress = "44.195.77.193"; // Streaming server address
-        let streamPort = 8000; // Streaming server port
-        let mp3Mount = "stream"; // Leave empty if shoutcast; no /
-        let oggMount = ""; // Leave empty if you don't have an ogg stream; no /
-        let autoPlay = false; // Automatic play - true of false - does not work for Android browsers
-        // End Web4radio options
+        let streamName = "DAWN FM";
+        let streamAddress = "44.195.77.193";
+        let streamPort = 8000;
+        let mp3Mount = "stream";
+        let oggMount = "";
+        let autoPlay = false;
     </script>
 </head>
     <body>
@@ -59,12 +57,7 @@
                 <div class="jp-volume-bar">
                     <div class="jp-volume-bar-value"></div>
                 </div>
-                <!--<div class="jp-title">
-                    <ul>
-                        <li id="title"></li>
-                        <li id="current_song"></li>
-                    </ul>
-                </div>-->
+
                 <div class="jp-no-solution">
                     <span>Update Required</span>
                     To play the media you will need to either update your browser to a recent version.
@@ -88,7 +81,6 @@
 
             if (mp3Mount === "" && oggMount === "")
             {
-                // We have a shoutcast stream, override UA detection
                 mp3Mount = ";";
             }
 
@@ -115,7 +107,6 @@
                 setTimeout(function() {
                     let time = $("#web4radio_1").data("jPlayer").status.currentTime;
                     if (android && time === 0) {
-                        // If playback didn't start by now, it's probably a stock browser on Android < 4.1
                         $("#web4radio_1").jPlayer("stop");
                         $("#old-android").show();
                     }
@@ -138,8 +129,8 @@
                     $(this).jPlayer("play");
                 },
                 swfPath: "//cdn.jsdelivr.net/jplayer/2.4.0",
-                supplied: formats, // Prefer MP3 because OGG with metadata is buggy in Google Chrome
-                solution: "flash, html" // HTML5 does not recover from a broken connection in most browsers
+                supplied: formats,
+                solution: "flash, html"
             });
         });
         </script>

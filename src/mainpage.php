@@ -1,10 +1,29 @@
-<div class="banner" style="font-size: 30pt; border: 2px solid #222238;">
-    If you see this text then this banner is now unavailable and sad. <br> But you'll be able to all cool images here pretty soon. Betcha :)
+<div class="main-block banner-block">
+    <p>If you see this text then this banner is now unavailable and sad.</p>
+    <p>But you'll be able to all cool images here pretty soon. Betcha :)</p>
 </div>
 
-<div class="banner" style="font-size: 30pt; height: 600px; margin-top: 20px; border: 2px solid #222238;"> I know you would like something to read. <br> We're currently working on it</div>
+<div class="posts">
+    <a class="text-link" href="/posts.php">posts ></a>
+    <div class="main-block posts-block">
+        <p>I know you would like something to read.</p>
+        <p>We're currently working on it</p>
+    </div>
+</div>
 
-<div class="column">
-    <div class="podcasts" style="font-size: 30pt; border: 2px solid #222238;"> Podcasts will be available soon. <br> Prepare your headphones</div>
-    <div class="chart" style="font-size: 30pt; border: 2px solid #222238;"> Look at this amazing chart... oh, coming soon. <br> (damn, I forgot) </div>
+<div class="row">
+    <div class="podcasts">
+        <a class="text-link" href="/podcasts.php">podcasts ></a>
+        <div class="main-block podcasts-chart-block">
+            <p>Podcasts will be available soon.</p>
+            <p>Prepare your headphones</p>
+        </div>
+    </div>
+    <div class="chart">
+        <a class="text-link" href="/chart.php">music charts ></a>
+        <div class="main-block podcasts-chart-block">
+            <p>Look at this amazing chart...</p>
+            <p>oh, coming soon (damn, I forgot)</p>
+        </div>
+    </div>
 </div>

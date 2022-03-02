@@ -5,7 +5,7 @@
         require ('src/mainpage.php');
         require ('src/footer.php');
     }
-    elseif (uri == '/online-player/player.html') {
+    elseif ($uri == '/online-player/player.html') {
         require ('online-player/player.html');
     }
     else {
