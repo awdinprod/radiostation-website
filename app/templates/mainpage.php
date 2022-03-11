@@ -4,7 +4,7 @@
 </div>
 
 <div class="posts">
-    <a class="text-link" href="/posts.php">posts ></a>
+    <a class="text-link" href="/posts">posts ></a>
     <div class="main-block posts-block">
         <p>I know you would like something to read.</p>
         <p>We're currently working on it</p>
@@ -13,14 +13,14 @@
 
 <div class="row">
     <div class="podcasts">
-        <a class="text-link" href="/podcasts.php">podcasts ></a>
+        <a class="text-link" href="/podcasts">podcasts ></a>
         <div class="main-block podcasts-chart-block">
             <p>Podcasts will be available soon.</p>
             <p>Prepare your headphones</p>
         </div>
     </div>
     <div class="chart">
-        <a class="text-link" href="/chart.php">music charts ></a>
+        <a class="text-link" href="/chart">music charts ></a>
         <div class="main-block podcasts-chart-block">
             <p>Look at this amazing chart...</p>
             <p>oh, coming soon (damn, I forgot)</p>
