@@ -1,7 +1,6 @@
 body {
-    background: url("src/dawn-bg.png") no-repeat center center fixed;
+    background: url("../assets/dawn-bg.png") no-repeat center center fixed;
     background-size: cover;
-    /*background-color: #323354;*/
     color: #8e90ec;
     font-family: "Fira Sans", sans-serif;
     margin: 0;
