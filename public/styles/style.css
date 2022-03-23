@@ -66,6 +66,19 @@ p {
     width: auto;
 }
 
+.post-page{
+    margin: 110px 10% 20px;
+    height: auto;
+    width: auto;
+    float: left;
+}
+
+.post-temp{
+    border: 2px solid #464672;
+    margin: 10px 1% 5px;
+    height: auto;
+}
+
 .row{
     display: flex;
     padding: 10px 50px 20px;
