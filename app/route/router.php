@@ -3,7 +3,9 @@
 
     use App\core\DBconnection;
 
-    use App\views\pageview;
+    use App\views\mainpageview;
+    use App\views\postpageview;
+    use App\views\singlepostview;
     use App\views\playerview;
 
     class router {
@@ -20,13 +22,21 @@
                     die();
                 }
 
-                if (($uri == '/') || ($uri == '/posts') || ($uri == '/podcasts') || ($uri == '/chart')){
-                    $view = new pageview($connection);
+                if($uri == '/'){
+                    $view = new mainpageview($connection);
+                }
+                elseif (substr($uri, 0, 6) == "/posts"){
+                    $id = (int)substr($uri, 7, strlen($uri));
+                    $view = new postpageview($connection, $id);
+                }
+                elseif (substr($uri, 0, 11) == "/singlepost"){
+                    $id = (int)substr($uri, 12, strlen($uri));
+                    $view = new singlepostview ($connection, $id);
                 }
                 elseif ($uri == '/online-player') {
                     $view = new playerview();
                 }
-                $view->render();
+                $view->render($id);
             }
 
         }

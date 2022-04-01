@@ -3,7 +3,7 @@
     <p>But you'll be able to all cool images here pretty soon. Betcha :)</p>
 </div>
 
-<div class="posts">
+<div class="posts-mainpage">
     <a class="text-link" href="/posts">posts ></a>
     <div class="main-block posts-block">
         <p>I know you would like something to read.</p>

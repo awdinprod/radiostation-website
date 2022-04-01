@@ -1,4 +1,5 @@
 <div class="main-block post-page">
-    <p>This is post page</p>
-    <div>
+    <?php foreach ($postcontent as &$onepost):
+        require $posttmp;
+        endforeach;?>
 </div>

@@ -17,11 +17,11 @@
         public function __construct (){
             require '../app/configuration/database-config.php';
 
-            $this->dbname = $dbname;
-            $this->host = $host;
-            $this->port = $port;
-            $this->username = $username;
-            $this->password = $password;
+            $this->dbname = DB_NAME;
+            $this->host = DB_HOST;
+            $this->port = DB_PORT;
+            $this->username = DB_USERNAME;
+            $this->password = DB_PASSWORD;
 
             $options = [
                 \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
