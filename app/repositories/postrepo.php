@@ -23,4 +23,13 @@
 
             return $result;
         }
+
+        public function uploadlatestposts (){
+            $stm = $this->pdo->query("SELECT * FROM posts ORDER BY created_at DESC LIMIT 6");
+            $result = $stm->fetchAll();
+            foreach ($result as &$res)
+                $res = new post($res);
+
+            return $result;
+        }
     }

@@ -17,7 +17,13 @@
             return $singlepost;
         }
 
-        public function __construct($connection, $uri){
-            $this->repo = new postrepo($connection, $uri);
+        public function getLatestPosts(){
+            $postlist = $this->repo->uploadlatestposts();
+
+            return $postlist;
+        }
+
+        public function __construct($connection, $id = NULL){
+            $this->repo = new postrepo($connection, $id);
         }
     }

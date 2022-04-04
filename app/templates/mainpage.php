@@ -6,8 +6,18 @@
 <div class="posts-mainpage">
     <a class="text-link" href="/posts">posts ></a>
     <div class="main-block posts-block">
-        <p>I know you would like something to read.</p>
-        <p>We're currently working on it</p>
+        <div class="post-column-left border-right">
+            <?php for ($i = 0, $size = min(3, sizeof($postcontent)); $i < $size; $i++){
+                require $posttmp;
+            }
+             ?>
+        </div>
+        <div class="post-column-right">
+            <?php for ($i = 3, $size = min(6, sizeof($postcontent)); $i < $size; $i++){
+                require $posttmp;
+            }
+            ?>
+        </div>
     </div>
 </div>
 
