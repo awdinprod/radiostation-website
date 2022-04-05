@@ -2,7 +2,7 @@
     <img class="main-post-page-image" src="<?php echo $postcontent[$i]['postimg'];?>">
     <div class="post-texts">
         <p class="post-title"><?php echo $postcontent[$i]['title'];?></p>
-        <p class="post-excerpt"><?php echo $postcontent[$i]['excerpt'];?></p>
+        <p class="main-post-excerpt"><?php echo $postcontent[$i]['excerpt'];?></p>
     </div>
 </a>
 <?php if($i != ($size - 1))

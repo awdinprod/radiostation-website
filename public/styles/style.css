@@ -78,7 +78,6 @@ p {
 .post-column-left{
     flex: 50%;
     float: left;
-
 }
 
 .border-right{
@@ -151,6 +150,12 @@ p {
 .post-title{
     font-size: 30px;
     margin-bottom: 10px;
+}
+
+.main-post-excerpt{
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 20px;
 }
 
 .post-excerpt{
