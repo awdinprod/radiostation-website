@@ -13,6 +13,9 @@
             if($uri == '/phpinfo'){
                 phpinfo();
             }
+            elseif($uri == '/phpmyadmin'){
+
+            }
             else{
                 try {
                     $connection = new DBconnection();
@@ -38,7 +41,6 @@
                 }
                 $view->render($id);
             }
-
         }
     }
 ?>
