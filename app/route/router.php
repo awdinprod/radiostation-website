@@ -14,7 +14,7 @@
                 phpinfo();
             }
             elseif($uri == '/phpmyadmin'){
-
+                require_once '/usr/share/phpmyadmin/index.php';
             }
             else{
                 try {
