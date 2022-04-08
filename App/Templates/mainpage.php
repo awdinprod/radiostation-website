@@ -7,13 +7,15 @@
     <a class="text-link" href="/posts">posts ></a>
     <div class="main-block posts-block">
         <div class="post-column-left border-right">
-            <?php for ($i = 0, $size = min(3, sizeof($postcontent)); $i < $size; $i++){
+            <?php
+            for ($i = 0, $size = min(3, sizeof($postcontent)); $i < $size; $i++) {
                 require $posttmp;
             }
-             ?>
+            ?>
         </div>
         <div class="post-column-right">
-            <?php for ($i = 3, $size = min(6, sizeof($postcontent)); $i < $size; $i++){
+            <?php
+            for ($i = 3, $size = min(6, sizeof($postcontent)); $i < $size; $i++) {
                 require $posttmp;
             }
             ?>

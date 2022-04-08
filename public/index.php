@@ -1,12 +1,12 @@
 <?php
-    require_once './../app/core/Autoload.php';
 
-    use App\route\router;
+require_once './../App/Core/Autoload.php';
 
-    if($_SERVER['REQUEST_URI'] == '/phpmyadmin'){
-        require_once '/usr/share/phpmyadmin/index.php';
-    }
+use App\Route\Router;
 
-    $router = new router();
+if ($_SERVER['REQUEST_URI'] == '/phpmyadmin') {
+    require_once '/usr/share/phpmyadmin/index.php';
+} else {
+    $router = new Router();
     $router->get($_SERVER['REQUEST_URI']);
-    ?>
+}
