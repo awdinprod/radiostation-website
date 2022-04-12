@@ -1,3 +1,5 @@
+<h1>welcome to dawn fm</h1>
+
 <div class="main-block banner-block">
     <p>If you see this text then this banner is now unavailable and sad.</p>
     <p>But you'll be able to all cool images here pretty soon. Betcha :)</p>
@@ -6,20 +8,16 @@
 <div class="posts-mainpage">
     <a class="text-link" href="/posts">posts ></a>
     <div class="main-block posts-block">
-        <div class="post-column-left border-right">
-            <?php
-            for ($i = 0, $size = min(3, sizeof($postcontent)); $i < $size; $i++) {
-                require $posttmp;
-            }
-            ?>
-        </div>
-        <div class="post-column-right">
-            <?php
-            for ($i = 3, $size = min(6, sizeof($postcontent)); $i < $size; $i++) {
-                require $posttmp;
-            }
-            ?>
-        </div>
+        <?php
+        foreach ($postscontent as &$onepost) : ?>
+            <a class="post-temp" href="<?php echo "/singlepost/" . $onepost['id']; ?>">
+                <img class="main-post-page-image" src="<?php echo $onepost['postimg']; ?>">
+                <div class="post-texts">
+                    <p class="post-title"><?php echo $onepost['title']; ?></p>
+                    <p class="main-post-excerpt"><?php echo $onepost['excerpt']; ?></p>
+                </div>
+            </a>
+        <?php endforeach; ?>
     </div>
 </div>
 

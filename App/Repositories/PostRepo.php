@@ -7,7 +7,7 @@ use App\Models\Post;
 
 class PostRepo extends Repository
 {
-    public function uploadPosts()
+    public function loadPosts()
     {
         $stm = $this->pdo->query("SELECT * FROM posts ORDER BY id DESC");
         $result = $stm->fetchAll();
@@ -18,7 +18,7 @@ class PostRepo extends Repository
         return $result;
     }
 
-    public function uploadPost($id)
+    public function loadPost($id)
     {
         $stm = $this->pdo->query("SELECT * FROM posts WHERE id=$id");
         $postsql = $stm->fetch();
@@ -30,7 +30,7 @@ class PostRepo extends Repository
         return $result;
     }
 
-    public function uploadLatestPosts()
+    public function loadLatestPosts()
     {
         $stm = $this->pdo->query("SELECT * FROM posts ORDER BY created_at DESC LIMIT 6");
         $result = $stm->fetchAll();
@@ -39,5 +39,10 @@ class PostRepo extends Repository
         }
 
         return $result;
+    }
+
+    public function __construct($connection)
+    {
+        parent::__construct($connection);
     }
 }

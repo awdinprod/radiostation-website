@@ -8,21 +8,21 @@ class PostControl extends Controller
 {
     public function getPostList()
     {
-        $postlist = $this->repo->uploadPosts();
+        $postlist = $this->repo->loadPosts();
 
         return $postlist;
     }
 
     public function getSinglePost($id)
     {
-        $singlepost = $this->repo->uploadPost($id);
+        $singlepost = $this->repo->loadPost($id);
 
         return $singlepost;
     }
 
     public function getLatestPosts()
     {
-        $postlist = $this->repo->uploadLatestPosts();
+        $postlist = $this->repo->loadLatestPosts();
 
         return $postlist;
     }

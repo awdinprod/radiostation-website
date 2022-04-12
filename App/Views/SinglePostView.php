@@ -9,9 +9,9 @@ class SinglePostView extends View
     public function render($id)
     {
         $singlepost = $this->controller->getSinglePost($id);
-        $postcontent = array();
-        $postcontent = $singlepost->getContent();
-        $pagetmp = '../App/Templates/singlepostpage.php';
+        $postscontent = array();
+        $postscontent = $singlepost->getContent();
+        $pagetemp = '../App/Templates/singlepostpage.php';
         require '../App/Templates/page.php';
     }
 

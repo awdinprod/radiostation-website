@@ -12,28 +12,32 @@ class Router
 {
     public function get($uri)
     {
-        if ($uri == '/phpinfo') {
-            phpinfo();
-        } else {
-            try {
-                $connection = new DBConnection();
-            } catch (\Exception $e) {
-                print "Error!: " . $e->getMessage();
-                die();
-            }
+        try {
+            $connection = new DBConnection();
+        } catch (\Exception $e) {
+            print "Error!: " . $e->getMessage();
+            die();
+        }
 
-            if ($uri == '/') {
+        $section = explode('/', $uri);
+
+        switch ($section[1]) {
+            case '':
                 $view = new MainPageView($connection);
-            } elseif (substr($uri, 0, 6) == "/posts") {
+                break;
+            case 'posts':
                 $id = (int)substr($uri, 7, strlen($uri));
                 $view = new PostPageView($connection, $id);
-            } elseif (substr($uri, 0, 11) == "/singlepost") {
+                break;
+            case 'singlepost':
                 $id = (int)substr($uri, 12, strlen($uri));
                 $view = new SinglePostView($connection, $id);
-            } elseif ($uri == '/online-player') {
+                break;
+            case 'online-player':
                 $view = new PlayerView();
-            }
-            $view->render($id);
+                break;
         }
+
+        $view->render($id);
     }
 }

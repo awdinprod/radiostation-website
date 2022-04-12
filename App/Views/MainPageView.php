@@ -9,12 +9,11 @@ class MainPageView extends View
     public function render($id)
     {
         $posts = $this->controller->getLatestPosts();
-        $postcontent = array();
+        $postscontent = array();
         foreach ($posts as $onepost) {
-            $postcontent[] = $onepost->getContent();
+            $postscontent[] = $onepost->getContent();
         }
-        $posttmp = '../App/Templates/postmaintemp.php';
-        $pagetmp = '../App/Templates/mainpage.php';
+        $pagetemp = '../App/Templates/mainpage.php';
         require '../App/Templates/page.php';
     }
 

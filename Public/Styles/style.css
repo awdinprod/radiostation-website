@@ -1,5 +1,5 @@
 body {
-    background: url("../assets/dawn-bg.png") no-repeat center center fixed;
+    background: url("../Assets/dawn-bg.png") no-repeat center center fixed;
     background-size: cover;
     color: #8e90ec;
     font-family: "Fira Sans", sans-serif;
@@ -38,6 +38,12 @@ body {
     background-color: #222238;
 }
 
+h1{
+    margin: 110px auto 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 40pt;
+}
 
 .main-block {
     background-color: #13131f;
@@ -53,7 +59,7 @@ p {
 }
 
 .banner-block{
-    margin: 110px 10% 0;
+    margin: 0 10% 0;
     height: 400px;
     width: auto;
 }
@@ -63,7 +69,8 @@ p {
 }
 
 .posts-block{
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
     height: auto;
     width: auto;
     overflow: hidden;
@@ -75,23 +82,8 @@ p {
     clear: both;
 }
 
-.post-column-left{
-    flex: 50%;
-    float: left;
-}
-
-.border-right{
-    border-right: 3px solid #222238;
-}
-
-.post-column-right{
-    flex: 49%;
-    float: right;
-
-}
-
 .post-page{
-    margin: 110px 10% 20px;
+    margin: 0 10% 20px;
     height: auto;
 }
 

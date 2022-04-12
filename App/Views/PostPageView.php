@@ -9,12 +9,11 @@ class PostPageView extends View
     public function render($id)
     {
         $posts = $this->controller->getPostList();
-        $postcontent = array();
+        $postscontent = array();
         foreach ($posts as $onepost) {
-            $postcontent[] = $onepost->getContent();
+            $postscontent[] = $onepost->getContent();
         }
-        $posttmp = '../App/Templates/posttemp.php';
-        $pagetmp = '../App/Templates/postpage.php';
+        $pagetemp = '../App/Templates/postpage.php';
         require '../App/Templates/page.php';
     }
 
