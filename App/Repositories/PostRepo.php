@@ -40,9 +40,4 @@ class PostRepo extends Repository
 
         return $result;
     }
-
-    public function __construct($connection)
-    {
-        parent::__construct($connection);
-    }
 }

@@ -5,9 +5,9 @@ namespace App\Models;
 class Post extends Model
 {
     protected $title;
-    protected $excerpt;
+    protected $shorttext;
     protected $bodytext;
-    protected $postimg;
+    protected $img;
 //        protected $user_id;
 //        protected $comments = [];
 
@@ -16,9 +16,9 @@ class Post extends Model
         return array(
             'id' => $this->id,
             'title' => $this->title,
-            'excerpt' => $this->excerpt,
+            'shorttext' => $this->shorttext,
             'bodytext' => $this->bodytext,
-            'postimg' => $this->postimg
+            'img' => $this->img
         );
     }
 
@@ -26,9 +26,9 @@ class Post extends Model
     {
         $this->id = $post['id'];
         $this->title = $post['title'];
-        $this->excerpt = $post['excerpt'];
+        $this->shorttext = $post['excerpt'];
         $this->bodytext = $post['body_text'];
-        $this->postimg = $post['post_img'];
+        $this->img = $post['post_img'];
 //            $this->user_id = $post['user_id'];
     }
 }

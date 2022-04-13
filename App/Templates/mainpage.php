@@ -11,10 +11,10 @@
         <?php
         foreach ($postscontent as &$onepost) : ?>
             <a class="post-temp" href="<?php echo "/singlepost/" . $onepost['id']; ?>">
-                <img class="main-post-page-image" src="<?php echo $onepost['postimg']; ?>">
+                <img class="main-post-page-image" src="<?php echo $onepost['img']; ?>">
                 <div class="post-texts">
                     <p class="post-title"><?php echo $onepost['title']; ?></p>
-                    <p class="main-post-excerpt"><?php echo $onepost['excerpt']; ?></p>
+                    <p class="main-post-excerpt"><?php echo $onepost['shorttext']; ?></p>
                 </div>
             </a>
         <?php endforeach; ?>
