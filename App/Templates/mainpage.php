@@ -9,7 +9,7 @@
     <a class="text-link" href="/posts">posts ></a>
     <div class="main-block posts-block">
         <?php
-        foreach ($postscontent as &$onepost) : ?>
+        foreach ($postlistarray as &$onepost) : ?>
             <a class="post-temp" href="<?php echo "/singlepost/" . $onepost['id']; ?>">
                 <img class="main-post-page-image" src="<?php echo $onepost['img']; ?>">
                 <div class="post-texts">
@@ -25,8 +25,16 @@
     <div class="podcasts">
         <a class="text-link" href="/podcasts">podcasts ></a>
         <div class="main-block podcasts-chart-block">
-            <p>Podcasts will be available soon.</p>
-            <p>Prepare your headphones</p>
+            <?php
+            foreach ($podcastlistarray as &$onepost) : ?>
+                <a class="post-temp" href="<?php echo "/singlepodcast/" . $onepost['id']; ?>">
+                    <img class="main-post-page-image" src="<?php echo $onepost['img']; ?>">
+                    <div class="post-texts">
+                        <p class="post-title"><?php echo $onepost['title']; ?></p>
+                        <p class="main-post-excerpt"><?php echo $onepost['shorttext']; ?></p>
+                    </div>
+                </a>
+            <?php endforeach; ?>
         </div>
     </div>
     <div class="chart">

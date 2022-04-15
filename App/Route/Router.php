@@ -3,11 +3,9 @@
 namespace App\Route;
 
 use App\Controllers\ContentListControl;
+use App\Controllers\MainPageControl;
 use App\Controllers\PlayerControl;
 use App\Controllers\SingleContentControl;
-use App\Views\MainPageView;
-use App\Views\PostPageView;
-use App\Views\SinglePostView;
 
 class Router
 {
@@ -17,7 +15,9 @@ class Router
 
         switch ($section[1]) {
             case '':
-//                $view = new MainPageView($connection);
+                $class = array('App\Models\Post', 'App\Models\Podcast');
+                $section[1] = array('posts', 'podcasts');
+                $control = new MainPageControl();
                 break;
             case 'posts':
                 $id = (int)substr($uri, 7, strlen($uri));

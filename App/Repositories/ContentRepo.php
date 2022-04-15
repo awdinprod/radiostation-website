@@ -31,9 +31,9 @@ class ContentRepo extends Repository
         return $result;
     }
 
-    public function loadLatestContent($content, $class)
+    public function loadLatestContent($content, $class, $contentnum)
     {
-        $stm = $this->pdo->query("SELECT * FROM $content ORDER BY created_at DESC LIMIT 6");
+        $stm = $this->pdo->query("SELECT * FROM $content ORDER BY created_at DESC LIMIT $contentnum");
         $result = $stm->fetchAll();
         foreach ($result as &$res) {
             $res = new $class($res);

@@ -72,7 +72,7 @@ p {
     display: grid;
     grid-template-columns: 50% 50%;
     height: auto;
-    width: auto;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -194,7 +194,7 @@ hr.post-divider {
 }
 
 .podcasts-chart-block {
-    height: 800px;
+    height: auto;
 }
 
 .row:after{

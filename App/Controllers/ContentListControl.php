@@ -12,11 +12,6 @@ class ContentListControl extends Controller
         return $this->repo->loadAllContent($content, $class);
     }
 
-    public function getLatestContent($content, $class)
-    {
-        return $this->repo->loadLatestContent($content, $class);
-    }
-
     public function showPage($content, $class)
     {
         $contentlist = $this->getAllContent($content, $class);

@@ -5,7 +5,7 @@ namespace App\Controllers;
 class Controller
 {
     protected $repo;
-    public $view;
+    protected $view;
 
 
 }
