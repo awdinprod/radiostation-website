@@ -2,13 +2,12 @@
 
 <div class="main-block post-page">
     <div class="post-temp">
-        <img class="singlepost-page-image" src="<?php echo $postscontent['postimg'];?>">
+        <img class="singlepost-page-image" src="<?php echo $singlecontentarray['img'];?>">
         <div class="post-texts">
-            <p class="post-title"><?php echo $postscontent['title'];?></p>
-            <p class="post-excerpt"><?php echo $postscontent['excerpt'];?></p>
-            <p class="post-bodytext"><?php echo $postscontent['bodytext']?></p>
+            <p class="post-title"><?php echo $singlecontentarray['title'];?></p>
+            <p class="post-excerpt"><?php echo $singlecontentarray['shorttext'];?></p>
+            <p class="post-bodytext"><?php echo $singlecontentarray['bodytext']?></p>
             <hr class="post-divider">
         </div>
     </div>
-
 </div>

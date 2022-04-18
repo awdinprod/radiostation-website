@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>DAWN FM</title>
+    <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
     <link href="/Styles/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -14,5 +15,6 @@ require_once $pagetemp;
 
 require_once '../App/Templates/footer.php';
 ?>
+
 </body>
 </html>
