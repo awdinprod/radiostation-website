@@ -8,35 +8,35 @@ use App\Models\Podcast;
 
 class ContentRepo extends Repository
 {
-    public function loadAllContent($content, $class)
+    public function loadAllContent($content, $model_class)
     {
         $stm = $this->pdo->query("SELECT * FROM $content ORDER BY id DESC");
         $result = $stm->fetchAll();
         foreach ($result as &$res) {
-            $res = new $class($res);
+            $res = new $model_class($res);
         }
 
         return $result;
     }
 
-    public function loadSingleContent($content, $class, $id)
+    public function loadSingleContent($content, $model_class, $id)
     {
         $stm = $this->pdo->query("SELECT * FROM $content WHERE id=$id");
-        $postsql = $stm->fetch();
-        if (!$postsql) {
+        $content_sql = $stm->fetch();
+        if (!$content_sql) {
             throw new Exception("There is no such post. Sorry, my friend, try again");
         }
-        $result = new $class($postsql);
+        $result = new $model_class($content_sql);
 
         return $result;
     }
 
-    public function loadLatestContent($content, $class, $contentnum)
+    public function loadLatestContent($content, $model_class, $content_num)
     {
-        $stm = $this->pdo->query("SELECT * FROM $content ORDER BY created_at DESC LIMIT $contentnum");
+        $stm = $this->pdo->query("SELECT * FROM $content ORDER BY created_at DESC LIMIT $content_num");
         $result = $stm->fetchAll();
         foreach ($result as &$res) {
-            $res = new $class($res);
+            $res = new $model_class($res);
         }
 
         return $result;

@@ -13,13 +13,11 @@ class Post extends Model
 
     public function getContent()
     {
-        return array(
-            'id' => $this->id,
-            'title' => $this->title,
-            'shorttext' => $this->shorttext,
-            'bodytext' => $this->bodytext,
-            'img' => $this->img
-        );
+        $post_array = array();
+        foreach ($this as $key => $value) {
+            $post_array += [$key => $value];
+        }
+        return $post_array;
     }
 
     public function __construct($post)

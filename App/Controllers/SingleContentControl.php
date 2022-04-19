@@ -7,17 +7,16 @@ use App\Views\SingleContentView;
 
 class SingleContentControl extends Controller
 {
-    public function getSingleContent($content, $class, $id)
+    public function getSingleContent($content, $model_class, $id)
     {
-        return $this->repo->loadSingleContent($content, $class, $id);
+        return $this->repo->loadSingleContent($content, $model_class, $id);
     }
 
-    public function showPage($content, $class, $id)
+    public function showPage($content, $model_class, $id)
     {
-        $singlecontent = $this->getSingleContent($content, $class, $id);
-        $singlecontentarray = array();
-        $singlecontentarray = $singlecontent->getContent();
-        $this->view->render($singlecontentarray, $content);
+        $single_content = $this->getSingleContent($content, $model_class, $id);
+        $single_content_array = $single_content->getContent();
+        $this->view->render($single_content_array, $content);
     }
 
     public function __construct()

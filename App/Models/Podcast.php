@@ -11,13 +11,11 @@ class Podcast extends Model
 
     public function getContent()
     {
-        return array(
-            'id' => $this->id,
-            'title' => $this->title,
-            'shorttext' => $this->shorttext,
-            'img' => $this->img,
-            'audiourl' => $this->audiourl
-        );
+        $podcast_array = array();
+        foreach ($this as $key => $value) {
+            $podcast_array += [$key => $value];
+        }
+        return $podcast_array;
     }
 
     public function __construct($podcast)

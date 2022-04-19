@@ -6,7 +6,7 @@ use App\Views\PlayerView;
 
 class PlayerControl extends Controller
 {
-    public function showPage()
+    public function showPage($content = null, $model_class = null, $id = null)
     {
         $this->view->render();
     }

@@ -6,6 +6,6 @@ class PlayerView extends View
 {
     public function render()
     {
-        require_once '../OnlinePlayer/player.html';
+        require_once '../App/Templates/player.html';
     }
 }

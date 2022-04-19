@@ -11,7 +11,7 @@
 <?php
 require_once '../App/Templates/header.php';
 
-require_once $pagetemp;
+require_once $page_temp;
 
 require_once '../App/Templates/footer.php';
 ?>
