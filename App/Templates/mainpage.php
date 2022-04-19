@@ -1,15 +1,10 @@
-<h1>welcome to dawn fm</h1>
-
-<div class="main-block banner-block">
-    <p>If you see this text then this banner is now unavailable and sad.</p>
-    <p>But you'll be able to all cool images here pretty soon. Betcha :)</p>
-</div>
+<h1>Welcome To DAWN FM</h1>
 
 <div class="posts-mainpage">
     <a class="text-link" href="/posts">posts ></a>
     <div class="main-block posts-block">
         <?php
-        foreach ($postlistarray as &$onepost) : ?>
+        foreach ($post_list_array as $onepost) : ?>
             <a class="post-temp" href="<?php echo "/singlepost/" . $onepost['id']; ?>">
                 <img class="main-post-page-image" src="<?php echo $onepost['img']; ?>">
                 <div class="post-texts">
@@ -26,7 +21,7 @@
         <a class="text-link" href="/podcasts">podcasts ></a>
         <div class="main-block podcasts-chart-block">
             <?php
-            foreach ($podcastlistarray as &$onepost) : ?>
+            foreach ($podcast_list_array as $onepost) : ?>
                 <a class="post-temp" href="<?php echo "/singlepodcast/" . $onepost['id']; ?>">
                     <img class="main-post-page-image" src="<?php echo $onepost['img']; ?>">
                     <div class="post-texts">
@@ -35,13 +30,6 @@
                     </div>
                 </a>
             <?php endforeach; ?>
-        </div>
-    </div>
-    <div class="chart">
-        <a class="text-link" href="/chart">music charts ></a>
-        <div class="main-block podcasts-chart-block">
-            <p>Look at this amazing chart...</p>
-            <p>oh, coming soon (damn, I forgot)</p>
         </div>
     </div>
 </div>

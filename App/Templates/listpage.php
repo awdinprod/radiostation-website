@@ -1,8 +1,8 @@
-<h1><?php echo $content; ?></h1>
+<h1><?php echo ucfirst($content); ?></h1>
 
 <div class="main-block post-page">
     <?php
-    foreach ($contentlistarray as &$onepost) : ?>
+    foreach ($content_list_array as $onepost) : ?>
         <a class="post-temp" href="<?php echo "/single" . substr($content, 0, -1) . "/" . $onepost['id']; ?>">
             <img class="post-page-image" src="<?php echo $onepost['img'];?>">
             <div class="post-texts">

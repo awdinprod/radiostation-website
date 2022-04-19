@@ -7,24 +7,24 @@ use App\Views\MainPageView;
 
 class MainPageControl extends Controller
 {
-    public function getLatestContent($content, $class, $contentnum)
+    public function getLatestContent($content, $model_class, $content_num)
     {
-        return $this->repo->loadLatestContent($content, $class, $contentnum);
+        return $this->repo->loadLatestContent($content, $model_class, $content_num);
     }
 
-    public function showPage($content, $class)
+    public function showPage($content, $model_class, $id = null)
     {
-        $postlist = $this->getLatestContent($content[0], $class[0], 6);
-        $podcastlist = $this->getLatestContent($content[1], $class[1], 4);
-        $postlistarray = array();
-        foreach ($postlist as &$unit) {
-            $postlistarray[] = $unit->getContent();
+        $post_list = $this->getLatestContent($content[0], $model_class[0], 6);
+        $podcast_list = $this->getLatestContent($content[1], $model_class[1], 4);
+        $post_list_array = array();
+        foreach ($post_list as $unit) {
+            $post_list_array[] = $unit->getContent();
         }
-        $podcastlistarray = array();
-        foreach ($podcastlist as &$unit) {
-            $podcastlistarray[] = $unit->getContent();
+        $podcast_list_array = array();
+        foreach ($podcast_list as $unit) {
+            $podcast_list_array[] = $unit->getContent();
         }
-        $this->view->render($postlistarray, $podcastlistarray);
+        $this->view->render($post_list_array, $podcast_list_array);
     }
 
     public function __construct()

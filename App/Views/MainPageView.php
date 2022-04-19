@@ -4,9 +4,9 @@ namespace App\Views;
 
 class MainPageView extends View
 {
-    public function render($postlistarray, $podcastlistarray)
+    public function render($post_list_array, $podcast_list_array)
     {
-        $pagetemp = '../App/Templates/mainpage.php';
+        $page_temp = '../App/Templates/mainpage.php';
         require '../App/Templates/page.php';
     }
 }

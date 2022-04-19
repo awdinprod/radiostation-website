@@ -7,19 +7,19 @@ use App\Views\ContentListView;
 
 class ContentListControl extends Controller
 {
-    public function getAllContent($content, $class)
+    public function getAllContent($content, $model_class)
     {
-        return $this->repo->loadAllContent($content, $class);
+        return $this->repo->loadAllContent($content, $model_class);
     }
 
-    public function showPage($content, $class)
+    public function showPage($content, $model_class, $id = null)
     {
-        $contentlist = $this->getAllContent($content, $class);
-        $contentlistarray = array();
-        foreach ($contentlist as &$unit) {
-            $contentlistarray[] = $unit->getContent();
+        $content_list = $this->getAllContent($content, $model_class);
+        $content_list_array = array();
+        foreach ($content_list as $unit) {
+            $content_list_array[] = $unit->getContent();
         }
-        $this->view->render($contentlistarray, $content);
+        $this->view->render($content_list_array, $content);
     }
 
     public function __construct()

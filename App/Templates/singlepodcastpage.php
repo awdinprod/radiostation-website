@@ -1,12 +1,12 @@
-<h1>podcasts</h1>
+<h1>Podcasts</h1>
 
 <div class="main-block post-page">
     <div class="post-temp">
-        <img class="singlepost-page-image" src="<?php echo $singlecontentarray['img'];?>">
+        <img class="singlepost-page-image" src="<?php echo $single_content_array['img'];?>">
         <div class="post-texts">
-            <p class="post-title"><?php echo $singlecontentarray['title'];?></p>
-            <p class="post-excerpt"><?php echo $singlecontentarray['shorttext'];?></p>
-            <audio data-src="<?php echo $singlecontentarray['audiourl'];?>" type="audio/mpeg"></audio>
+            <p class="post-title"><?php echo $single_content_array['title'];?></p>
+            <p class="post-excerpt"><?php echo $single_content_array['shorttext'];?></p>
+            <audio data-src="<?php echo $single_content_array['audiourl'];?>" type="audio/mpeg"></audio>
             <div class="audio-player">
                 <div class="timeline">
                     <div class="progress"></div>
@@ -21,7 +21,7 @@
                         <div class="divider">/</div>
                         <div class="length"></div>
                     </div>
-                    <div class="name"><?php echo $singlecontentarray['title'];?></div>
+                    <div class="name"><?php echo $single_content_array['title'];?></div>
 
                     <div class="volume-container">
                         <div class="volume-button">
