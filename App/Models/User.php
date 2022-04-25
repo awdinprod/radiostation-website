@@ -8,6 +8,7 @@ class User extends Model
     protected $email;
     protected $password;
     protected $role;
+    protected $token;
 
     public function getUsername()
     {
@@ -21,11 +22,11 @@ class User extends Model
 
     public function __construct($user)
     {
-        $this->id = $user['id'];
+        $this->id = $user['user_id'];
         $this->username = $user['username'];
         $this->email = $user['email'];
         $this->password = $user['password'];
         $this->role = $user['role'];
+        $this->token = $user['token'];
     }
 }
-

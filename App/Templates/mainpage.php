@@ -4,12 +4,12 @@
     <a class="text-link" href="/posts">posts ></a>
     <div class="main-block posts-block">
         <?php
-        foreach ($post_list_array as $onepost) : ?>
-            <a class="post-temp" href="<?php echo "/singlepost/" . $onepost['id']; ?>">
-                <img class="main-post-page-image" src="<?php echo $onepost['img']; ?>">
+        foreach ($post_list_array as $one_post) : ?>
+            <a class="post-temp" href="<?php echo "/singlepost/" . $one_post['id']; ?>">
+                <img class="main-post-page-image" src="<?php echo $one_post['img']; ?>">
                 <div class="post-texts">
-                    <p class="post-title"><?php echo $onepost['title']; ?></p>
-                    <p class="main-post-excerpt"><?php echo $onepost['shorttext']; ?></p>
+                    <p class="post-title"><?php echo $one_post['title']; ?></p>
+                    <p class="main-post-excerpt"><?php echo $one_post['shorttext']; ?></p>
                 </div>
             </a>
         <?php endforeach; ?>
@@ -21,12 +21,12 @@
         <a class="text-link" href="/podcasts">podcasts ></a>
         <div class="main-block podcasts-chart-block">
             <?php
-            foreach ($podcast_list_array as $onepost) : ?>
-                <a class="post-temp" href="<?php echo "/singlepodcast/" . $onepost['id']; ?>">
-                    <img class="main-post-page-image" src="<?php echo $onepost['img']; ?>">
+            foreach ($podcast_list_array as $one_post) : ?>
+                <a class="post-temp" href="<?php echo "/singlepodcast/" . $one_post['id']; ?>">
+                    <img class="main-post-page-image" src="<?php echo $one_post['img']; ?>">
                     <div class="post-texts">
-                        <p class="post-title"><?php echo $onepost['title']; ?></p>
-                        <p class="main-post-excerpt"><?php echo $onepost['shorttext']; ?></p>
+                        <p class="post-title"><?php echo $one_post['title']; ?></p>
+                        <p class="main-post-excerpt"><?php echo $one_post['shorttext']; ?></p>
                     </div>
                 </a>
             <?php endforeach; ?>
