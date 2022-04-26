@@ -34,8 +34,8 @@ class UserRepo extends Repository
         $stm = $this->pdo->prepare($sql);
         $stm->execute([$username, $email, md5($password), 'pending', $token]);
 
-//        $mail = new Mailer();
-//        $mail->sendConfirmationMail($email, $token);
+        $mail = new Mailer();
+        $mail->sendConfirmationMail($email, $token);
 
         return $token;
     }
@@ -59,6 +59,17 @@ class UserRepo extends Repository
         return $user;
     }
 
+    public function checkConfirmation($token)
+    {
+        $stm = $this->pdo->query("SELECT * FROM users WHERE token='$token' LIMIT 1");
+        $user_checked = $stm->fetch();
+        if (!empty($user_checked)) {
+            $id = $user_checked['user_id'];
+            $this->pdo->query("UPDATE users SET status='confirmed' WHERE user_id=$id");
+        } else {
+            throw new \Exception("Wrong token");
+        }
+    }
 
     public function __construct()
     {

@@ -17,7 +17,12 @@ class LoginSignupControl extends Controller
         return $this->repo->login($username, $password);
     }
 
-    public function showPage()
+    public function checkConfirmation($token)
+    {
+        $this->repo->checkConfirmation($token);
+    }
+
+    public function showPage($content, $model_class = null, $id = null)
     {
         if (isset($_POST['reg_user'])) {
             extract($_POST, EXTR_SKIP);
@@ -26,10 +31,12 @@ class LoginSignupControl extends Controller
                 $page_temp = '../App/Templates/confirm-email.php';
                 $this->view->render($page_temp);
             } catch (\Exception $e) {
-                $this->view->render();
+                $page_temp = '../App/Templates/signup-page.php';
+                $this->view->render($page_temp);
             }
         } else {
-            $this->view->render();
+            $page_temp = '../App/Templates/' . $content . '-page.php';
+            $this->view->render($page_temp);
         }
     }
 

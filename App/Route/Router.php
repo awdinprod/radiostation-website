@@ -13,7 +13,6 @@ class Router
     public function get($uri)
     {
         $uri_sections = explode('/', $uri);
-        setcookie('test2', 123321);
 
         if (isset($_POST['login_user'])) {
             extract($_POST, EXTR_SKIP);
@@ -54,6 +53,17 @@ class Router
             case 'signup':
                 $control = new LoginSignupControl();
                 break;
+            case 'confirmation':
+                $control = new LoginSignupControl();
+                $control->checkConfirmation($uri_sections[2]);
+                break;
+            case 'logout':
+                unset($_COOKIE['username']);
+                setcookie('username', null, -1, '/');
+                unset($_COOKIE['role']);
+                setcookie('role', null, -1, '/');
+                header('Location: /');
+                die();
             case 'online-player':
                 $control = new PlayerControl();
                 break;

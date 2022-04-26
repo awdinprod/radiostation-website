@@ -1,2 +1,3 @@
 /App/Configuration/database-config.php
 /App/ErrorReports/
+/App/Configuration/mailer-config.php

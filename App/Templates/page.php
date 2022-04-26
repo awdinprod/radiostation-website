@@ -26,7 +26,7 @@ require_once '../App/Templates/header.php';
             <div>
                 <button class="login-btn" type="submit" name="login_user">Login</button>
                 <span>First time here? <a href="/signup">Sign up!</a></span>
-                <span class="right-align"><a href="/forgot-password">Forgot password?</a></span>
+<!--                <span><a href="/forgot-password">Forgot password?</a></span>-->
             </div>
         </form>
     </div>
