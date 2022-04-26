@@ -20,6 +20,9 @@ window.onclick = function (event) {
 
 var loginbtn = document.getElementById("loginBtn");
 
-loginbtn.onclick = function () {
-    modal.style.display = "block";
+if (typeof loginbtn !== 'undefined') {
+    loginbtn.onclick = function () {
+        modal.style.display = "block";
+    }
+
 }
