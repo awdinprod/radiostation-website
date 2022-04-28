@@ -1,3 +1,5 @@
 <footer>
-    <div class="footer"> © awdinprod, 2022 </div>
+    <div class="footer">
+        <span class="footer-text">© awdinprod, 2022</span>
+    </div>
 </footer>

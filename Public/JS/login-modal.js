@@ -1,28 +1,28 @@
-var modal = document.getElementById("myModal");
+const modal_window = document.getElementById("modal");
 
-var btn = document.getElementById("myBtn");
+const header_login_button = document.getElementById("loginBtn1");
 
-var span = document.getElementsByClassName("close")[0];
+const cross_button = document.getElementsByClassName("close")[0];
 
-btn.onclick = function () {
-    modal.style.display = "block";
+let form_login_button = document.getElementById("loginBtn2");
+
+header_login_button.onclick = function () {
+    modal_window.style.display = "block";
 }
 
-span.onclick = function () {
-    modal.style.display = "none";
+if (typeof form_login_button !== 'undefined') {
+    form_login_button.onclick = function () {
+        modal_window.style.display = "block";
+    }
+}
+
+cross_button.onclick = function () {
+    modal_window.style.display = "none";
 }
 
 window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (event.target == modal_window) {
+        modal_window.style.display = "none";
     }
 }
 
-var loginbtn = document.getElementById("loginBtn");
-
-if (typeof loginbtn !== 'undefined') {
-    loginbtn.onclick = function () {
-        modal.style.display = "block";
-    }
-
-}

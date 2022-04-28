@@ -11,7 +11,7 @@
                 </div>
             </li>
         <?php else : ?>
-            <li class="login-header"><a href="#" id="myBtn">login</a></li>
+            <li class="login-header"><a href="#" id="loginBtn1">login</a></li>
         <?php endif; ?>
     </ul>
 </header>

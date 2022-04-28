@@ -8,17 +8,8 @@ class Post extends Model
     protected $shorttext;
     protected $bodytext;
     protected $img;
-//        protected $user_id;
-//        protected $comments = [];
-
-    public function getContent()
-    {
-        $post_array = array();
-        foreach ($this as $key => $value) {
-            $post_array += [$key => $value];
-        }
-        return $post_array;
-    }
+    protected $user_id;
+    protected $comments = [];
 
     public function __construct($post)
     {
@@ -27,6 +18,5 @@ class Post extends Model
         $this->shorttext = $post['excerpt'];
         $this->bodytext = $post['body_text'];
         $this->img = $post['post_img'];
-//            $this->user_id = $post['user_id'];
     }
 }

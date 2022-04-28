@@ -5,6 +5,7 @@ namespace App\Route;
 use App\Controllers\ContentListControl;
 use App\Controllers\LoginSignupControl;
 use App\Controllers\MainPageControl;
+use App\Controllers\NewPasswordControl;
 use App\Controllers\PlayerControl;
 use App\Controllers\SingleContentControl;
 
@@ -18,11 +19,14 @@ class Router
             extract($_POST, EXTR_SKIP);
             $control = new LoginSignupControl();
             $user = $control->login($username, $password);
-            setcookie('username', $user->getUsername());
-            setcookie('role', $user->getRole());
+            setcookie('token', $user->getToken());
             header('Location: /');
             die();
         }
+
+        $control = null;
+        $model_class = null;
+        $id = null;
 
         switch ($uri_sections[1]) {
             case '':
@@ -53,15 +57,20 @@ class Router
             case 'signup':
                 $control = new LoginSignupControl();
                 break;
+            case 'forgot-password':
+            case 'new-password':
+                $control = new NewPasswordControl();
+                if (isset($_POST['new_password'])) {
+                    $id = $uri_sections[2];
+                }
+                break;
             case 'confirmation':
                 $control = new LoginSignupControl();
                 $control->checkConfirmation($uri_sections[2]);
                 break;
             case 'logout':
-                unset($_COOKIE['username']);
-                setcookie('username', null, -1, '/');
-                unset($_COOKIE['role']);
-                setcookie('role', null, -1, '/');
+                unset($_COOKIE['token']);
+                setcookie('token', null, -1, '/');
                 header('Location: /');
                 die();
             case 'online-player':

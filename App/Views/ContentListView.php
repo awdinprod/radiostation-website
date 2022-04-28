@@ -6,7 +6,14 @@ class ContentListView extends View
 {
     public function render($content_list_array, $content)
     {
-        $page_temp = '../App/Templates/listpage.php';
+        ob_start();
+        require '../App/Templates/listpage.php';
+        $page_temp = ob_get_clean();
         require '../App/Templates/page.php';
+    }
+
+    public function __construct()
+    {
+        parent::__construct();
     }
 }

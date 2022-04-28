@@ -9,8 +9,8 @@
         <p><input type="password" placeholder="Password" name="password" required></p>
         <p><input type="password" placeholder="Confirm password" name="conf_password" required></p>
         <div>
-            <button class="login-btn signup" type="submit" name="reg_user">Sign up</button>
-            <span>Already have an account? <a href="#" id="loginBtn">Login!</a></span>
+            <button class="login-btn" type="submit" name="reg_user">Sign up</button>
+            <span>Already have an account? <a href="#" id="loginBtn2">Login!</a></span>
         </div>
     </form>
 </div>

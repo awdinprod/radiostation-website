@@ -2,67 +2,45 @@
 
 namespace App\Repositories;
 
-use App\Mailer\Mailer;
-use App\Models\User;
-
 class UserRepo extends Repository
 {
     /**
      * @throws \Exception
      */
-    public function signup($username, $email, $password, $conf_password)
+    public function checkUser($username, $email)
     {
-        if (empty($username)) {
-            throw new \Exception("Username is required");
-        }
-        if (empty($password)) {
-            throw new \Exception("Password is required");
-        }
-        if ($password != $conf_password) {
-            throw new \Exception("Passwords do not match");
-        }
-
         $stm = $this->pdo->query("SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1");
-        $found = $stm->fetchAll();
-        if (!empty($found)) {
-            throw new \Exception("User already exists");
-        }
+        return $stm->fetchAll();
+    }
 
-        $token = md5($email . date("Y-m-d H:i:s"));
-
+    public function signup($username, $email, $password, $token)
+    {
         $sql = "INSERT INTO users (username, email, password, status, token) VALUES (?, ?, ?, ?, ?)";
         $stm = $this->pdo->prepare($sql);
         $stm->execute([$username, $email, md5($password), 'pending', $token]);
-
-        $mail = new Mailer();
-        $mail->sendConfirmationMail($email, $token);
-
-        return $token;
     }
 
-    public function login($username, $password)
+    public function login($username)
     {
         $stm = $this->pdo->query("SELECT * FROM users WHERE username='$username' OR email='$username' LIMIT 1");
-        $found = $stm->fetch();
-        if (!$found) {
-            throw new \Exception("User not found");
-        }
-        if ($found['status'] == "pending") {
-            throw new \Exception("Confirm email!");
-        }
-        if ($found['password'] == md5($password)) {
-            $user = new User($found);
-        } else {
-            throw new \Exception("User not found");
-        }
+        return $stm->fetch();
+    }
 
-        return $user;
+    public function findByToken($token)
+    {
+        $stm = $this->pdo->query("SELECT * FROM users WHERE token='$token' LIMIT 1");
+        return $stm->fetch();
+    }
+
+    public function changePassword($password, $id)
+    {
+        $md5password = md5($password);
+        $this->pdo->query("UPDATE users SET password='$md5password' WHERE user_id=$id");
     }
 
     public function checkConfirmation($token)
     {
-        $stm = $this->pdo->query("SELECT * FROM users WHERE token='$token' LIMIT 1");
-        $user_checked = $stm->fetch();
+        $user_checked = $this->findByToken($token);
         if (!empty($user_checked)) {
             $id = $user_checked['user_id'];
             $this->pdo->query("UPDATE users SET status='confirmed' WHERE user_id=$id");
@@ -71,6 +49,11 @@ class UserRepo extends Repository
         }
     }
 
+    public function checkEmail($email)
+    {
+        $stm = $this->pdo->query("SELECT * FROM users WHERE email='$email' LIMIT 1");
+        return $stm->fetch();
+    }
     public function __construct()
     {
         parent::__construct();

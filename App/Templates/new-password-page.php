@@ -1,0 +1,13 @@
+<h1>Change password</h1>
+
+<div class="main-block signup-page">
+    <form method="post">
+        <span class="fill-in-text">Please enter and confirm new password</span>
+        <hr class="post-divider">
+        <p><input type="password" placeholder="Password" name="password" required></p>
+        <p><input type="password" placeholder="Confirm password" name="conf_password" required></p>
+        <div>
+            <button class="login-btn" type="submit" name="new_password">Change password</button>
+        </div>
+    </form>
+</div>

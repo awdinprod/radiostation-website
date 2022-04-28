@@ -9,15 +9,6 @@ class Podcast extends Model
     protected $img;
     protected $audiourl;
 
-    public function getContent()
-    {
-        $podcast_array = array();
-        foreach ($this as $key => $value) {
-            $podcast_array += [$key => $value];
-        }
-        return $podcast_array;
-    }
-
     public function __construct($podcast)
     {
         $this->id = $podcast['id'];

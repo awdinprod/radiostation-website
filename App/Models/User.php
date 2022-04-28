@@ -10,14 +10,9 @@ class User extends Model
     protected $role;
     protected $token;
 
-    public function getUsername()
+    public function getToken()
     {
-        return $this->username;
-    }
-
-    public function getRole()
-    {
-        return $this->role;
+        return $this->token;
     }
 
     public function __construct($user)

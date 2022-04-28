@@ -1,7 +1,7 @@
-<h1>Confirmation</h1>
+<h1>Password Recovery</h1>
 
 <div class="main-block signup-page">
     <span class="confirm-text">
-        Your account is confirmed!
+        Your password is changed
     </span>
 </div>

@@ -9,10 +9,10 @@
 </head>
 <body>
 <?php
-require_once '../App/Templates/header.php';
+echo $this->header;
 ?>
 
-<div id="myModal" class="modal">
+<div id="modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <form method="post">
@@ -26,18 +26,18 @@ require_once '../App/Templates/header.php';
             <div>
                 <button class="login-btn" type="submit" name="login_user">Login</button>
                 <span>First time here? <a href="/signup">Sign up!</a></span>
-<!--                <span><a href="/forgot-password">Forgot password?</a></span>-->
+                <span><a href="/forgot-password">Forgot password?</a></span>
             </div>
         </form>
     </div>
 </div>
 
 <?php
-require_once $page_temp;
+echo $page_temp;
 ?>
 
 <?php
-require_once '../App/Templates/footer.php';
+echo $this->footer;
 ?>
     <script type="text/javascript" src="/JS/login-modal.js"></script>
 </body>

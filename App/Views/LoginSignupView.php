@@ -8,4 +8,9 @@ class LoginSignupView extends View
     {
         require_once '../App/Templates/page.php';
     }
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 }

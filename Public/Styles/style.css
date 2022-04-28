@@ -1,6 +1,5 @@
 body {
-    background: url("../Assets/dawn-bg.png") no-repeat center center fixed;
-    background-size: cover;
+    background-color: #09090e;
     color: #8e90ec;
     font-family: "Fira Sans", sans-serif;
     margin: 0;
@@ -212,8 +211,9 @@ input[type="text"], input[type="email"], input[type="password"]:focus {
     margin: 20px 15px;
     border: 2px solid #8e90ec;
     border-radius: 2px;
+    padding: 0 10px;
     background-color: #13131f;
-    width: 100px;
+    width: auto;
     height: 60px;
     text-align: center;
     font-size: 20pt;
@@ -245,6 +245,14 @@ input[type="text"], input[type="email"], input[type="password"]:focus {
     text-align: left;
     width: 100%;
     margin: 15px 20px 15px;
+}
+
+.confirm-text {
+    display: block;
+    text-align: center;
+    font-size: 20pt;
+    width: auto;
+    padding: 15px;
 }
 
 span a {
@@ -427,19 +435,24 @@ hr.post-divider {
 }
 
 .footer {
-    width: auto;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
     bottom: 0;
     background-color: #13131f;
     font-weight: 500;
     color: #6567a8;
     margin: 0;
     text-align: right;
-    padding-right: 15px;
     border-top: 2px solid #222238;
     border-bottom: 2px solid #222238;
 }
 
+.footer-text {
+    margin-right: 15px;
+}
 
+/*-------------------------------------------------- audio player -------------------------------------------------*/
 .audio-player {
     margin: 0 0 20px 10px;
     border-radius: 0 0 5px 5px;

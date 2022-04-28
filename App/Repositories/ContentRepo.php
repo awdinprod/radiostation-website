@@ -11,12 +11,12 @@ class ContentRepo extends Repository
     public function loadAllContent($content, $model_class)
     {
         $stm = $this->pdo->query("SELECT * FROM $content ORDER BY id DESC");
-        $result = $stm->fetchAll();
-        foreach ($result as &$res) {
-            $res = new $model_class($res);
+        $results = $stm->fetchAll();
+        foreach ($results as &$result) {
+            $result = new $model_class($result);
         }
 
-        return $result;
+        return $results;
     }
 
     public function loadSingleContent($content, $model_class, $id)
@@ -26,20 +26,18 @@ class ContentRepo extends Repository
         if (!$content_sql) {
             throw new Exception("There is no such post. Sorry, my friend, try again");
         }
-        $result = new $model_class($content_sql);
-
-        return $result;
+        return new $model_class($content_sql);
     }
 
     public function loadLatestContent($content, $model_class, $content_num)
     {
         $stm = $this->pdo->query("SELECT * FROM $content ORDER BY created_at DESC LIMIT $content_num");
-        $result = $stm->fetchAll();
-        foreach ($result as &$res) {
-            $res = new $model_class($res);
+        $results = $stm->fetchAll();
+        foreach ($results as &$result) {
+            $result = new $model_class($result);
         }
 
-        return $result;
+        return $results;
     }
 
     public function __construct()
