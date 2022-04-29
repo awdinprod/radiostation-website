@@ -4,16 +4,8 @@ const header_login_button = document.getElementById("loginBtn1");
 
 const cross_button = document.getElementsByClassName("close")[0];
 
-let form_login_button = document.getElementById("loginBtn2");
-
 header_login_button.onclick = function () {
     modal_window.style.display = "block";
-}
-
-if (typeof form_login_button !== 'undefined') {
-    form_login_button.onclick = function () {
-        modal_window.style.display = "block";
-    }
 }
 
 cross_button.onclick = function () {

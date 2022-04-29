@@ -14,3 +14,5 @@
         </div>
     </form>
 </div>
+
+<script type="text/javascript" src="/JS/signup-page-login-modal.js"></script>
