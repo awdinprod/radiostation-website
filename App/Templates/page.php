@@ -14,7 +14,7 @@
 <?php
 echo $this->header;
 
-if (!isset($user)) {
+if ($user != null) {
     echo $this->modal_login;
 }
 
