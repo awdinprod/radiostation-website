@@ -69,7 +69,7 @@ class LoginSignupControl extends Controller
                 $this->view->render($page_temp, $user);
             } catch (\Exception $e) {
                 ob_start();
-                require '../App/Templates/signup-email.php';
+                require '../App/Templates/signup-page.php';
                 $page_temp = ob_get_clean();
                 $user = parent::userAuth();
                 $this->view->render($page_temp, $user);
