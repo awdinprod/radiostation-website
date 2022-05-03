@@ -76,7 +76,8 @@ class LoginSignupControl extends Controller
             ob_start();
             require '../App/Templates/' . $content . '-page.php';
             $page_temp = ob_get_clean();
-            $this->view->render($page_temp);
+            $user = parent::userAuth();
+            $this->view->render($page_temp, $user);
         }
     }
 

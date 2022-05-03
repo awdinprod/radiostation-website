@@ -19,7 +19,8 @@ class ContentListControl extends Controller
         foreach ($content_list as $unit) {
             $content_list_array[] = $unit->getContent();
         }
-        $this->view->render($content_list_array, $content);
+        $user = parent::userAuth();
+        $this->view->render($content_list_array, $content, $user);
     }
 
     public function __construct()

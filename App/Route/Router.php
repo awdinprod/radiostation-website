@@ -2,6 +2,8 @@
 
 namespace App\Route;
 
+use App\Controllers\AuthControl;
+use App\Controllers\UserSettingsControl;
 use App\Controllers\ContentListControl;
 use App\Controllers\LoginSignupControl;
 use App\Controllers\MainPageControl;
@@ -14,16 +16,6 @@ class Router
     public function get($uri)
     {
         $uri_sections = explode('/', $uri);
-
-        if (isset($_POST['login_user'])) {
-            extract($_POST, EXTR_SKIP);
-            $control = new LoginSignupControl();
-            $user = $control->login($username, $password);
-            setcookie('token', $user->getToken());
-            header('Location: /');
-            die();
-        }
-
         $control = null;
         $model_class = null;
         $id = null;
@@ -73,6 +65,9 @@ class Router
                 setcookie('token', null, -1, '/');
                 header('Location: /');
                 die();
+            case 'user-settings':
+                $control = new UserSettingsControl();
+                break;
             case 'online-player':
                 $control = new PlayerControl();
                 break;

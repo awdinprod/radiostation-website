@@ -133,7 +133,7 @@ form {
     font-weight: 450;
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
+.auth-input {
     width: 100%;
     display: inline-block;
     border: none;
@@ -148,7 +148,26 @@ input[type="text"], input[type="email"], input[type="password"] {
     border-radius: 1px;
 }
 
-input[type="text"], input[type="email"], input[type="password"]:focus {
+.auth-input:focus {
+    outline: none !important;
+}
+
+.settings-input {
+    width: 100%;
+    display: inline-block;
+    border: 2px solid #8e90ec;
+    box-sizing: border-box;
+    margin: 0 0 8px;
+    padding: 5px;
+    background-color: #13131f;
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 500;
+    font-size: 16pt;
+    color: #8e90ec;
+    border-radius: 1px;
+}
+
+.settings-input:focus {
     outline: none !important;
 }
 
@@ -230,6 +249,34 @@ input[type="text"], input[type="email"], input[type="password"]:focus {
     animation-name: color-change;
 }
 
+.submit-btn {
+    /*margin: 20px 15px;*/
+    border: 2px solid #8e90ec;
+    border-radius: 2px;
+    padding: 0 10px;
+    background-color: #13131f;
+    width: auto;
+    height: auto;
+    text-align: center;
+    font-size: 14pt;
+    font-family: "Fira Sans", sans-serif;
+    color: #8e90ec;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition-duration: 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #363657;
+    animation-duration: 0.3s;
+    animation-name: color-change;
+}
+
+.settings-form {
+    margin-bottom: 20px;
+    width: 90%;
+}
+
 .signup {
     width: 120px;
 }
@@ -274,6 +321,30 @@ h1 {
 form h2 {
     text-align: center;
     font-size: 30pt;
+}
+
+.admin-page {
+    margin: 110px 10% 0;
+}
+
+.user-settings {
+    margin: 10px 0 0 10px;
+    text-align: left;
+    width: 100%
+}
+
+.user-settings-image {
+    border-radius: 5px;
+    margin: 10px 1%;
+    height: 200px;
+    width: 200px;
+}
+
+.user-settings-text {
+    font-size: 16pt;
+    font-weight: 400;
+    display: flex;
+    margin-left: 0;
 }
 
 .main-block {
@@ -396,6 +467,11 @@ p {
 hr.post-divider {
     margin: 0 2.5% 20px;
     border: 1px solid #464673;
+}
+
+hr.settings-divider {
+    border: 1px solid #464673;
+    margin-right: 20px;
 }
 
 .row {

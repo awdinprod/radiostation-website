@@ -3,8 +3,8 @@
         <span class="close">&times;</span>
         <form method="post">
             <h2>Login</h2>
-            <label><input type="text" placeholder="Username or email" name="username" required></label>
-            <label><input type="password" placeholder="Password" name="password" required></label>
+            <label><input type="text" class="auth-input" placeholder="Username or email" name="username" required></label>
+            <label><input type="password" class="auth-input" placeholder="Password" name="password" required></label>
             <div class="remember">
                 <input type="checkbox" class="custom-checkbox" id="remember">
                 <label for="remember">Remember me?</label>

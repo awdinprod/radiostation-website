@@ -16,7 +16,8 @@ class SingleContentControl extends Controller
     {
         $single_content = $this->getSingleContent($content, $model_class, $id);
         $single_content_array = $single_content->getContent();
-        $this->view->render($single_content_array, $content);
+        $user = parent::userAuth();
+        $this->view->render($single_content_array, $content, $user);
     }
 
     public function __construct()

@@ -55,7 +55,8 @@ class NewPasswordControl extends Controller
             require '../App/Templates/' . $content . '-page.php';
         }
         $page_temp = ob_get_clean();
-        $this->view->render($page_temp);
+        $user = parent::userAuth();
+        $this->view->render($page_temp, $user);
     }
 
     public function __construct()
