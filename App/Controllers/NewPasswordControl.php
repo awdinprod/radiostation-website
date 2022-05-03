@@ -48,7 +48,7 @@ class NewPasswordControl extends Controller
                 $this->view->render($page_temp, $user);
             }
         } elseif ($id != null) {
-            $this->changePassword($password, $conf_password, $token);
+            $this->changePassword($password, $conf_password, $id);
             ob_start();
             require '../App/Templates/changed-password-page.php';
         } else {
