@@ -44,7 +44,8 @@ class NewPasswordControl extends Controller
                 ob_start();
                 require '../App/Templates/forgot-password-email.php';
                 $page_temp = ob_get_clean();
-                $this->view->render($page_temp);
+                $user = parent::userAuth();
+                $this->view->render($page_temp, $user);
             }
         } elseif ($id != null) {
             $this->changePassword($password, $conf_password, $token);

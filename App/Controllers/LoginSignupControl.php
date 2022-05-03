@@ -65,12 +65,14 @@ class LoginSignupControl extends Controller
                 ob_start();
                 require '../App/Templates/confirm-email.php';
                 $page_temp = ob_get_clean();
-                $this->view->render($page_temp);
+                $user = parent::userAuth();
+                $this->view->render($page_temp, $user);
             } catch (\Exception $e) {
                 ob_start();
                 require '../App/Templates/signup-email.php';
                 $page_temp = ob_get_clean();
-                $this->view->render($page_temp);
+                $user = parent::userAuth();
+                $this->view->render($page_temp, $user);
             }
         } else {
             ob_start();
