@@ -19,7 +19,7 @@ class ForgotPasswordControl extends Controller
         }
     }
 
-    public function showPage($content, $model_class = null, $id = null)
+    public function showPage()
     {
         if (isset($_POST['recover_password'])) {
             extract($_POST, EXTR_SKIP);

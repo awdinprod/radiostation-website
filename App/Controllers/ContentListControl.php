@@ -12,7 +12,7 @@ class ContentListControl extends Controller
         return $this->repo->loadAllContent($content, $model_class);
     }
 
-    public function showPage($content, $model_class, $id = null)
+    public function showPage($content, $model_class)
     {
         $content_list = $this->getAllContent($content, $model_class);
         $content_list_array = array();

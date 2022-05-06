@@ -12,7 +12,7 @@ class ConfirmationControl extends Controller
         $this->repo->checkConfirmation($token);
     }
 
-    public function showPage($content, $model_class = null, $id = null)
+    public function showPage()
     {
         ob_start();
         require '../App/Templates/confirmation-page.php';

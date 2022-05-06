@@ -15,91 +15,88 @@ use App\Controllers\UserSettingsControl;
 
 class Router
 {
-    private $url_array = array(
-        '' => [
-            'model_class' => array('App\Models\Post', 'App\Models\Podcast'),
-            'content' => array('posts', 'podcasts'),
-            'controller' => MainPageControl::class,
-            'method' => 'showPage'
-        ],
-        'posts' => [
-            'model_class' => 'App\Models\Post',
-            'content' => 'posts',
-            'controller' => ContentListControl::class,
-            'method' => 'showPage'
-        ],
-        'podcasts' => [
-            'model_class' => 'App\Models\Podcast',
-            'content' => 'podcasts',
-            'controller' => ContentListControl::class,
-            'method' => 'showPage'
-        ],
-        'singlepost' => [
-            'model_class' => 'App\Models\Post',
-            'content' => 'posts',
-            'controller' => SingleContentControl::class,
-            'method' => 'showPage'
-        ],
-        'singlepodcast' => [
-            'model_class' => 'App\Models\Podcast',
-            'content' => 'podcasts',
-            'controller' => SingleContentControl::class,
-            'method' => 'showPage'
-        ],
-        'signup' => [
-            'model_class' => null,
-            'content' => 'signup',
-            'controller' => SignupControl::class,
-            'method' => 'showPage'
-        ],
-        'forgot-password' => [
-            'model_class' => null,
-            'content' => 'forgot-password',
-            'controller' => ForgotPasswordControl::class,
-            'method' => 'showPage'
-        ],
-        'new-password' => [
-            'content' => 'new-password',
-            'controller' => NewPasswordControl::class,
-            'method' => 'showPage'
-        ],
-        'confirmation' => [
-            'content' => 'confirmation',
-            'controller' => ConfirmationControl::class,
-            'method' => 'showPage'
-        ],
-        'login' => [
-            'content' => 'login',
-            'controller' => AuthControl::class,
-            'method' => 'login'
-        ],
-        'logout' => [
-            'content' => 'logout',
-            'controller' => AuthControl::class,
-            'method' => 'logout'
-        ],
-        'online-player' => [
-            'content' => 'online-player',
-            'controller' => PlayerControl::class,
-            'method' => 'showPage'
-        ],
-        'user-settings' => [
-            'content' => 'user-settings',
-            'controller' => UserSettingsControl::class,
-            'method' => 'showPage'
-        ]
-    );
+    private array $url_array;
 
     public function get($uri)
     {
         $uri_sections = explode('/', $uri);
-        $uri_sections[2] ? $id = $uri_sections[2] : $id = null;
         $controller = new $this->url_array[$uri_sections[1]]['controller']();
-        $method = $this->url_array[$uri_sections[1]]['method'];
-        $controller->$method(
-            $this->url_array[$uri_sections[1]]['content'],
-            $this->url_array[$uri_sections[1]]['model_class'],
-            $id
+        call_user_func_array(
+            [$controller, $this->url_array[$uri_sections[1]]['method']],
+            $this->url_array[$uri_sections[1]]['args']
+        );
+    }
+
+    public function __construct()
+    {
+        $uri_sections = explode('/', $_SERVER['REQUEST_URI']);
+        $this->url_array = array(
+            '' => [
+                'controller' => MainPageControl::class,
+                'method' => 'showPage',
+                'args' => [array('posts', 'podcasts'), array('App\Models\Post', 'App\Models\Podcast')]
+            ],
+            'posts' => [
+                'controller' => ContentListControl::class,
+                'method' => 'showPage',
+                'args' => ['posts', 'App\Models\Post']
+            ],
+            'podcasts' => [
+                'controller' => ContentListControl::class,
+                'method' => 'showPage',
+                'args' => ['podcasts', 'App\Models\Podcast']
+            ],
+            'singlepost' => [
+                'controller' => SingleContentControl::class,
+                'method' => 'showPage',
+                'args' => ['posts', 'App\Models\Post', $uri_sections[2]]
+            ],
+            'singlepodcast' => [
+                'controller' => SingleContentControl::class,
+                'method' => 'showPage',
+                'args' => ['podcasts', 'App\Models\Podcast', $uri_sections[2]]
+            ],
+            'signup' => [
+                'controller' => SignupControl::class,
+                'method' => 'showPage',
+                'args' => []
+            ],
+            'forgot-password' => [
+                'controller' => ForgotPasswordControl::class,
+                'method' => 'showPage',
+                'args' => []
+            ],
+            'new-password' => [
+                'controller' => NewPasswordControl::class,
+                'method' => 'showPage',
+                'args' => []
+            ],
+            'confirmation' => [
+                'controller' => ConfirmationControl::class,
+                'method' => 'showPage',
+                'args' => []
+            ],
+            'login' => [
+                'controller' => AuthControl::class,
+                'method' => 'login',
+                'args' => []
+            ],
+            'logout' => [
+                'controller' => AuthControl::class,
+                'method' => 'logout',
+                'args' => []
+            ],
+            'online-player' => [
+                'controller' => PlayerControl::class,
+                'method' => 'showPage',
+                'args' => []
+            ],
+            'user-settings' => [
+                'controller' => UserSettingsControl::class,
+                'method' => 'showPage',
+                'args' => []
+            ],
+            'phpmyadmin' => []
         );
     }
 }

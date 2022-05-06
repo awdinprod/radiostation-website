@@ -12,7 +12,7 @@ class MainPageControl extends Controller
         return $this->repo->loadLatestContent($content, $model_class, $content_num);
     }
 
-    public function showPage($content, $model_class, $id = null)
+    public function showPage($content, $model_class)
     {
         $post_list = $this->getLatestContent($content[0], $model_class[0], 6);
         $podcast_list = $this->getLatestContent($content[1], $model_class[1], 4);

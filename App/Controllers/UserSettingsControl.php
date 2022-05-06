@@ -11,7 +11,11 @@ class UserSettingsControl extends Controller
     {
         $userdata = $this->user->getUserData();
         ob_start();
-        require '../App/Templates/user-settings-page.php';
+        if ($userdata != null) {
+            require '../App/Templates/user-settings-page.php';
+        } else {
+            require '../App/Templates/forbidden-page.php';
+        }
         $page_temp = ob_get_clean();
         $this->view->render($page_temp, $userdata);
     }

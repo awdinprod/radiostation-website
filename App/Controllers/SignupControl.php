@@ -33,7 +33,7 @@ class SignupControl extends Controller
         $mail->sendConfirmationMail($email, $token);
     }
 
-    public function showPage($content, $model_class = null, $id = null)
+    public function showPage()
     {
         if (isset($_POST['reg_user'])) {
             extract($_POST, EXTR_SKIP);
