@@ -302,6 +302,14 @@ form {
     padding: 15px;
 }
 
+.confirm-password-text {
+    display: none;
+    text-align: center;
+    font-size: 16pt;
+    width: auto;
+    padding: 15px;
+}
+
 span a {
     color: #8e90ec;
 }
@@ -408,7 +416,7 @@ p {
     text-decoration: none;
 }
 
-.singlepost-temp {
+.single-post-temp {
     background-color: #2c2c48;
     color: #6567a8;
     border: 2px solid #464673;
@@ -429,7 +437,7 @@ p {
     width: 200px;
 }
 
-.singlepost-page-image {
+.single-post-page-image {
     border-radius: 5px;
     margin: 10px 1%;
     height: 300px;

@@ -5,7 +5,6 @@ namespace App\Views;
 class View
 {
     protected $header;
-    protected $user;
     protected $modal_login;
     protected $footer;
 

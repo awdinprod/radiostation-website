@@ -1,7 +1,7 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <form method="post">
+        <form action="/login" method="post">
             <h2>Login</h2>
             <label><input type="text" class="auth-input" placeholder="Username or email" name="username" required></label>
             <label><input type="password" class="auth-input" placeholder="Password" name="password" required></label>

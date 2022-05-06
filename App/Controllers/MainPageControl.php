@@ -24,13 +24,14 @@ class MainPageControl extends Controller
         foreach ($podcast_list as $unit) {
             $podcast_list_array[] = $unit->getContent();
         }
-        $user = parent::userAuth();
-        $this->view->render($post_list_array, $podcast_list_array, $user);
+        $userdata = $this->user->getUserData();
+        $this->view->render($post_list_array, $podcast_list_array, $userdata);
     }
 
     public function __construct()
     {
         $this->repo = new ContentRepo();
+        $this->user = new AuthControl();
         $this->view = new MainPageView();
     }
 }

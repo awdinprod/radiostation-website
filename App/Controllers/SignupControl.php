@@ -5,9 +5,9 @@ namespace App\Controllers;
 use App\Mailer\Mailer;
 use App\Models\User;
 use App\Repositories\UserRepo;
-use App\Views\LoginSignupView;
+use App\Views\SignupView;
 
-class LoginSignupControl extends Controller
+class SignupControl extends Controller
 {
 
     public function signup($username, $email, $password, $conf_password)
@@ -33,29 +33,6 @@ class LoginSignupControl extends Controller
         $mail->sendConfirmationMail($email, $token);
     }
 
-    public function login($username, $password)
-    {
-        $check = $this->repo->login($username);
-        if (!$check) {
-            throw new \Exception("Username or password is incorrect");
-        }
-        if ($check['status'] == "pending") {
-            throw new \Exception("Confirm email!");
-        }
-        if ($check['password'] == md5($password)) {
-            $user = new User($check);
-        } else {
-            throw new \Exception("Username or password is incorrect");
-        }
-
-        return $user;
-    }
-
-    public function checkConfirmation($token)
-    {
-        $this->repo->checkConfirmation($token);
-    }
-
     public function showPage($content, $model_class = null, $id = null)
     {
         if (isset($_POST['reg_user'])) {
@@ -65,27 +42,28 @@ class LoginSignupControl extends Controller
                 ob_start();
                 require '../App/Templates/confirm-email.php';
                 $page_temp = ob_get_clean();
-                $user = parent::userAuth();
-                $this->view->render($page_temp, $user);
+                $userdata = $this->user->getUserData();
+                $this->view->render($page_temp, $userdata);
             } catch (\Exception $e) {
                 ob_start();
                 require '../App/Templates/signup-page.php';
                 $page_temp = ob_get_clean();
-                $user = parent::userAuth();
-                $this->view->render($page_temp, $user);
+                $userdata = $this->user->getUserData();
+                $this->view->render($page_temp, $userdata);
             }
         } else {
             ob_start();
-            require '../App/Templates/' . $content . '-page.php';
+            require '../App/Templates/signup-page.php';
             $page_temp = ob_get_clean();
-            $user = parent::userAuth();
-            $this->view->render($page_temp, $user);
+            $userdata = $this->user->getUserData();
+            $this->view->render($page_temp, $userdata);
         }
     }
 
     public function __construct()
     {
         $this->repo = new UserRepo();
-        $this->view = new LoginSignupView();
+        $this->user = new AuthControl();
+        $this->view = new SignupView();
     }
 }

@@ -10,7 +10,7 @@
         <p><input type="password" class="auth-input" placeholder="Confirm password" name="conf_password" required></p>
         <div>
             <button class="login-btn" type="submit" name="reg_user">Sign up</button>
-            <span>Already have an account? <a href="#" id="loginBtn2">Login!</a></span>
+            <span>Already have an account? <a id="loginBtn2">Login!</a></span>
         </div>
     </form>
 </div>

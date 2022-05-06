@@ -16,13 +16,14 @@ class SingleContentControl extends Controller
     {
         $single_content = $this->getSingleContent($content, $model_class, $id);
         $single_content_array = $single_content->getContent();
-        $user = parent::userAuth();
-        $this->view->render($single_content_array, $content, $user);
+        $userdata = $this->user->getUserData();
+        $this->view->render($single_content_array, $content, $userdata);
     }
 
     public function __construct()
     {
         $this->repo = new ContentRepo();
+        $this->user = new AuthControl();
         $this->view = new SingleContentView();
     }
 }

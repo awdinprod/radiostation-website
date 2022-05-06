@@ -2,7 +2,7 @@
 
 namespace App\Views;
 
-class LoginSignupView extends View
+class SignupView extends View
 {
     public function render($page_temp, $user)
     {

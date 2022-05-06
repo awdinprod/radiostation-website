@@ -19,13 +19,14 @@ class ContentListControl extends Controller
         foreach ($content_list as $unit) {
             $content_list_array[] = $unit->getContent();
         }
-        $user = parent::userAuth();
-        $this->view->render($content_list_array, $content, $user);
+        $userdata = $this->user->getUserData();
+        $this->view->render($content_list_array, $content, $userdata);
     }
 
     public function __construct()
     {
         $this->repo = new ContentRepo();
+        $this->user = new AuthControl();
         $this->view = new ContentListView();
     }
 }

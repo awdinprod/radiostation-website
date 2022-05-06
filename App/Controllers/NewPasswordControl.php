@@ -2,23 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Mailer\Mailer;
 use App\Repositories\UserRepo;
-use App\Views\LoginSignupView;
+use App\Views\SignupView;
 
 class NewPasswordControl extends Controller
 {
-    public function mailRecoverPassword($email)
-    {
-        $check = $this->repo->checkEmail($email);
-        if (!$check) {
-            throw new \Exception("Wrong email");
-        } else {
-            $mail = new Mailer();
-            $mail->sendRecoveryMail($email, $check['token']);
-        }
-    }
-
     public function changePassword($password, $conf_password, $token)
     {
         if ($password != $conf_password) {
@@ -34,35 +22,24 @@ class NewPasswordControl extends Controller
 
     public function showPage($content, $model_class = null, $id = null)
     {
-        extract($_POST, EXTR_SKIP);
         if (isset($_POST['recover_password'])) {
-            try {
-                $this->mailRecoverPassword($email);
-                ob_start();
-                require '../App/Templates/check-email-password.php';
-            } catch (\Exception $e) {
-                ob_start();
-                require '../App/Templates/forgot-password-email.php';
-                $page_temp = ob_get_clean();
-                $user = parent::userAuth();
-                $this->view->render($page_temp, $user);
-            }
-        } elseif ($id != null) {
+            extract($_POST, EXTR_SKIP);
             $this->changePassword($password, $conf_password, $id);
             ob_start();
             require '../App/Templates/changed-password-page.php';
         } else {
             ob_start();
-            require '../App/Templates/' . $content . '-page.php';
+            require '../App/Templates/new-password-page.php';
         }
         $page_temp = ob_get_clean();
-        $user = parent::userAuth();
-        $this->view->render($page_temp, $user);
+        $userdata = $this->user->getUserData();
+        $this->view->render($page_temp, $userdata);
     }
 
     public function __construct()
     {
         $this->repo = new UserRepo();
-        $this->view = new LoginSignupView();
+        $this->user = new AuthControl();
+        $this->view = new SignupView();
     }
 }

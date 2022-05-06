@@ -5,14 +5,19 @@ namespace App\Controllers;
 use App\Repositories\UserRepo;
 use App\Views\SignupView;
 
-class UserSettingsControl extends Controller
+class ConfirmationControl extends Controller
 {
-    public function showPage()
+    public function checkConfirmation($token)
     {
-        $userdata = $this->user->getUserData();
+        $this->repo->checkConfirmation($token);
+    }
+
+    public function showPage($content, $model_class = null, $id = null)
+    {
         ob_start();
-        require '../App/Templates/user-settings-page.php';
+        require '../App/Templates/confirmation-page.php';
         $page_temp = ob_get_clean();
+        $userdata = $this->user->getUserData();
         $this->view->render($page_temp, $userdata);
     }
 
