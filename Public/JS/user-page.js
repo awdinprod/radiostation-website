@@ -40,7 +40,6 @@ function UserSettingsPage() {
         <div>
             <h1>Settings</h1>
             <div className="post-temp">
-                <img src={"/Assets/dawn.jpeg"} className="user-settings-image" alt="user avatar"/>
                 <div className="user-settings">
                     <form className="settings-form" onSubmit={handleSubmit} method="post">
                         <label>Change username:

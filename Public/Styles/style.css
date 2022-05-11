@@ -274,7 +274,7 @@ form {
 
 .settings-form {
     margin-bottom: 20px;
-    width: 90%;
+    width: 100%;
 }
 
 .signup {
@@ -336,7 +336,7 @@ form h2 {
 }
 
 .user-settings {
-    margin: 10px 0 0 10px;
+    margin: 10px 10% 0;
     text-align: left;
     width: 100%
 }
