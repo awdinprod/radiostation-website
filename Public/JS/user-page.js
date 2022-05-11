@@ -32,7 +32,7 @@ function UserSettingsPage() {
     let handleSubmit = (event) => {
         event.preventDefault();
         let userForm = requestTransform(inputs);
-        sendHttpRequest('POST', 'http://192.168.56.10/api-user-changedata', userForm);
+        sendHttpRequest('POST', '/api-user-changedata', userForm);
         alert("Please reload this page to see changes");
     }
 
