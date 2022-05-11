@@ -96,7 +96,12 @@ class Router
                 'method' => 'showPage',
                 'args' => []
             ],
-            'phpmyadmin' => []
+            'phpmyadmin' => [],
+            'api-user-changedata' => [
+                'controller' => UserSettingsControl::class,
+                'method' => 'changeData',
+                'args' => []
+            ]
         );
     }
 }

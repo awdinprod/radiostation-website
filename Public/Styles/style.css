@@ -355,6 +355,11 @@ form h2 {
     margin-left: 0;
 }
 
+.change-form-text {
+    display: none;
+    margin-left: 10px;
+}
+
 .main-block {
     background-color: #13131f;
     color: #6567a8;

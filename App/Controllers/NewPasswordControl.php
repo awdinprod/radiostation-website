@@ -22,7 +22,7 @@ class NewPasswordControl extends Controller
 
     public function showPage($id = null)
     {
-        if (isset($_POST['recover_password'])) {
+        if (isset($_POST['new_password'])) {
             extract($_POST, EXTR_SKIP);
             $this->changePassword($password, $conf_password, $id);
             ob_start();

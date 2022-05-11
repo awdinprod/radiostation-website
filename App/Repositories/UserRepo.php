@@ -38,6 +38,16 @@ class UserRepo extends Repository
         $this->pdo->query("UPDATE users SET password='$md5password' WHERE user_id=$id");
     }
 
+    public function changeUserData($username, $email, $id)
+    {
+        if ($username != "") {
+            $this->pdo->query("UPDATE users SET username='$username' WHERE user_id=$id");
+        }
+        if ($email != "") {
+            $this->pdo->query("UPDATE users SET email='$email' WHERE user_id=$id");
+        }
+    }
+
     public function checkConfirmation($token)
     {
         $user_checked = $this->findByToken($token);
@@ -54,6 +64,7 @@ class UserRepo extends Repository
         $stm = $this->pdo->query("SELECT * FROM users WHERE email='$email' LIMIT 1");
         return $stm->fetch();
     }
+
     public function __construct()
     {
         parent::__construct();

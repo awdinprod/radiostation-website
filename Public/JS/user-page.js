@@ -1,53 +1,78 @@
 'use strict';
 
-class UserSettingsPage extends React.Component
-{
-    constructor(props)
-    {
-        super(props);
-        this.state = {
-            username: "username",
-            email: "email-address"
-        };
-        this.handleInputChange = this.handleInputChange.bind(this);
+function UserSettingsPage() {
+
+    const [inputs, setInputs] = React.useState({});
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
     }
 
-    handleInputChange(event)
-    {
-        const target = event.target;
-        const name = target.name;
+    const sendHttpRequest = (method, url, data) => {
+        return fetch(url, {
+            method: method,
+            body: data,
+            headers: data ? {'Content-Type' : 'application/x-www-form-urlencoded'} : {}
+        }).then(response => console.log(response));
+    };
 
-        this.setState({
-            [name]: value
-        });
+    const requestTransform = (data) => {
+        let formBody = []
+        for (let property in data) {
+            let encodedKey = encodeURIComponent(property);
+            let encodedValue = encodeURIComponent(data[property]);
+            formBody.push(encodedKey + "=" + encodedValue)
+        }
+        formBody = formBody.join("&");
+        return formBody;
     }
 
-    // handleSubmit(event)
-    // {
-    //     alert('Your changed username: ' + this.state.value);
-    //     event.preventDefault();
-    // }
+    let handleSubmit = (event) => {
+        event.preventDefault();
+        let userForm = requestTransform(inputs);
+        sendHttpRequest('POST', 'http://192.168.56.10/api-user-changedata', userForm);
+        alert("Please reload this page to see changes");
+    }
 
-    render()
-    {
-        return (
-            <div>
-                <h1>Settings</h1>
-                <div className="post-temp">
-                    <img src={"/Assets/dawn.jpeg"} className="user-settings-image" alt="user avatar"/>
-                    <div className="user-settings">
-                        <form className="settings-form" method="post">
-                            <p className="user-settings-text"><b>Username:</b> {this.state.username}</p>
-                            <input type="text" className="settings-input" name="username" placeholder="Enter new username" onChange={this.handleInputChange}/>
-                            <p className="user-settings-text"><b>e-mail:</b> {this.state.email}</p>
-                            <input type="text" className="settings-input" name="email" placeholder="Enter new email" onChange={this.handleInputChange}/>
-                            <input type="submit" className="submit-btn" value="Submit changes"/>
-                        </form>
-                    </div>
+    return (
+        <div>
+            <h1>Settings</h1>
+            <div className="post-temp">
+                <img src={"/Assets/dawn.jpeg"} className="user-settings-image" alt="user avatar"/>
+                <div className="user-settings">
+                    <form className="settings-form" onSubmit={handleSubmit} method="post">
+                        <label>Change username:
+                            <input
+                                type="text"
+                                name="username"
+                                className="settings-input"
+                                placeholder="Enter new username"
+                                value={inputs.username}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        <label>Change email:
+                            <input
+                                type="text"
+                                name="email"
+                                className="settings-input"
+                                placeholder="Enter new email"
+                                value={inputs.email}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        <button
+                            type="submit"
+                            className="submit-btn"
+                            name="change_user_data">Submit changes
+                        </button>
+                    </form>
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 ReactDOM.render
