@@ -4,7 +4,7 @@ namespace App\Views;
 
 class SingleContentView extends View
 {
-    public function render($single_content_array, $content, $user)
+    public function render($single_content_array, $content, $user, $comments)
     {
         parent::renderHeader($user);
         parent::renderModalLogin();

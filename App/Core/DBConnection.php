@@ -12,11 +12,6 @@ class DBConnection
     protected $charset;
     protected $pdo;
 
-    public function getPDO()
-    {
-        return $this->pdo;
-    }
-
     public function __construct()
     {
         require '../App/Configuration/database-config.php';
@@ -39,5 +34,10 @@ class DBConnection
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
+    }
+
+    public function getPDO()
+    {
+        return $this->pdo;
     }
 }

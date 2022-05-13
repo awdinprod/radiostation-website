@@ -7,6 +7,13 @@ use App\Views\MainPageView;
 
 class MainPageControl extends Controller
 {
+    public function __construct()
+    {
+        $this->repo = new ContentRepo();
+        $this->user = new AuthControl();
+        $this->view = new MainPageView();
+    }
+
     public function getLatestContent($content, $model_class, $content_num)
     {
         return $this->repo->loadLatestContent($content, $model_class, $content_num);
@@ -26,12 +33,5 @@ class MainPageControl extends Controller
         }
         $userdata = $this->user->getUserData();
         $this->view->render($post_list_array, $podcast_list_array, $userdata);
-    }
-
-    public function __construct()
-    {
-        $this->repo = new ContentRepo();
-        $this->user = new AuthControl();
-        $this->view = new MainPageView();
     }
 }

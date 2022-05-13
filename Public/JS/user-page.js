@@ -15,15 +15,15 @@ function UserSettingsPage() {
             method: method,
             body: data,
             headers: data ? {'Content-Type' : 'application/x-www-form-urlencoded'} : {}
-        }).then(response => console.log(response));
+        });
     };
 
     const requestTransform = (data) => {
-        let formBody = []
+        let formBody = [];
         for (let property in data) {
             let encodedKey = encodeURIComponent(property);
             let encodedValue = encodeURIComponent(data[property]);
-            formBody.push(encodedKey + "=" + encodedValue)
+            formBody.push(encodedKey + "=" + encodedValue);
         }
         formBody = formBody.join("&");
         return formBody;
@@ -54,7 +54,7 @@ function UserSettingsPage() {
                         </label>
                         <label>Change email:
                             <input
-                                type="text"
+                                type="email"
                                 name="email"
                                 className="settings-input"
                                 placeholder="Enter new email"

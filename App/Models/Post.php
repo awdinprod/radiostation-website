@@ -9,7 +9,6 @@ class Post extends Model
     protected $bodytext;
     protected $img;
     protected $user_id;
-    protected $comments = [];
 
     public function __construct($post)
     {

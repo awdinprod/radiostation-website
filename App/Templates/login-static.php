@@ -1,11 +1,11 @@
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <form action="/login" method="post">
+<div class="main-block login-page">
+    <?php if (isset($message)) :?>
+        <form action="/login" method="post" class="login-form">
             <h2>Login</h2>
+            <span class="error-block"><?php echo $message; ?></span>
             <label><input type="text" class="auth-input" placeholder="Username or email" name="username" required></label>
             <label><input type="password" class="auth-input" placeholder="Password" name="password" required></label>
-            <div class="remember">
+            <div class="remember-static-form">
                 <input type="checkbox" class="custom-checkbox" id="remember">
                 <label for="remember">Remember me?</label>
             </div>
@@ -15,5 +15,5 @@
                 <span><a href="/forgot-password">Forgot password?</a></span>
             </div>
         </form>
-    </div>
+    <?php endif; ?>
 </div>

@@ -4,10 +4,12 @@ namespace App\Repositories;
 
 class UserRepo extends Repository
 {
-    /**
-     * @throws \Exception
-     */
-    public function checkUser($username, $email)
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function loadUser($username, $email)
     {
         $stm = $this->pdo->query("SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1");
         return $stm->fetchAll();
@@ -20,13 +22,13 @@ class UserRepo extends Repository
         $stm->execute([$username, $email, md5($password), 'pending', $token]);
     }
 
-    public function login($username)
+    public function loadByUsername($username)
     {
         $stm = $this->pdo->query("SELECT * FROM users WHERE username='$username' OR email='$username' LIMIT 1");
         return $stm->fetch();
     }
 
-    public function findByToken($token)
+    public function findByToken($token = null)
     {
         $stm = $this->pdo->query("SELECT * FROM users WHERE token='$token' LIMIT 1");
         return $stm->fetch();
@@ -48,7 +50,7 @@ class UserRepo extends Repository
         }
     }
 
-    public function checkConfirmation($token)
+    public function updateStatus($token)
     {
         $user_checked = $this->findByToken($token);
         if (!empty($user_checked)) {
@@ -59,14 +61,9 @@ class UserRepo extends Repository
         }
     }
 
-    public function checkEmail($email)
+    public function loadByEmail($email)
     {
         $stm = $this->pdo->query("SELECT * FROM users WHERE email='$email' LIMIT 1");
         return $stm->fetch();
-    }
-
-    public function __construct()
-    {
-        parent::__construct();
     }
 }

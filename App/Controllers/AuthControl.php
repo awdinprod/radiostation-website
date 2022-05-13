@@ -3,26 +3,38 @@
 namespace App\Controllers;
 
 use App\Repositories\UserRepo;
+use App\Views\NonContentView;
 
 class AuthControl extends Controller
 {
+    public function __construct()
+    {
+        $this->repo = new UserRepo();
+        $this->view = new NonContentView();
+    }
+
     public function login()
     {
-        extract($_POST, EXTR_SKIP);
-        $check = $this->repo->login($username);
-        if (!$check) {
-            throw new \Exception("Username or password is incorrect");
+        if (isset($_POST['username'], $_POST['password'], $_POST['login_user'])) {
+            extract($_POST, EXTR_SKIP);
+            try {
+                $check = $this->repo->loadByUsername($username);
+                if (!$check) {
+                    throw new \Exception("Username or password is incorrect");
+                } elseif ($check['status'] == "pending") {
+                    throw new \Exception("Confirm your account");
+                } elseif ($check['password'] == md5($password)) {
+                    setcookie('token', $check['token']);
+                    header('Location: /');
+                    die();
+                } else {
+                    throw new \Exception("Username or password is incorrect");
+                }
+            } catch (\Exception $e) {
+                $exception_message = $e->getMessage();
+                $this->showPage($exception_message);
+            }
         }
-        if ($check['status'] == "pending") {
-            throw new \Exception("Confirm email!");
-        }
-        if ($check['password'] == md5($password)) {
-            setcookie('token', $check['token']);
-        } else {
-            throw new \Exception("Username or password is incorrect");
-        }
-        header('Location: /');
-        die();
     }
 
     public function logout()
@@ -30,6 +42,7 @@ class AuthControl extends Controller
         unset($_COOKIE['token']);
         setcookie('token', null, -1, '/');
         header('Location: /');
+        session_destroy();
         die();
     }
 
@@ -51,9 +64,16 @@ class AuthControl extends Controller
         return $this->user;
     }
 
-    public function __construct()
+    public function showPage($exception_message = null)
     {
-        $this->repo = new UserRepo();
+        $page_url = '../App/Templates/login-static.php';
+        try {
+            $userdata = $this->getUserData();
+        } catch (\Exception $e) {
+            $userdata = null;
+            $exception_message = $e->getMessage();
+            $page_url = '../App/Templates/message-page.php';
+        }
+        $this->view->render($page_url, $userdata, $exception_message);
     }
-
 }

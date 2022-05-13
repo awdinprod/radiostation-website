@@ -2,8 +2,8 @@
 
 namespace App\Route;
 
+use App\Controllers\AccountConfirmationControl;
 use App\Controllers\AuthControl;
-use App\Controllers\ConfirmationControl;
 use App\Controllers\ContentListControl;
 use App\Controllers\ForgotPasswordControl;
 use App\Controllers\MainPageControl;
@@ -16,16 +16,6 @@ use App\Controllers\UserSettingsControl;
 class Router
 {
     private array $url_array;
-
-    public function get($uri)
-    {
-        $uri_sections = explode('/', $uri);
-        $controller = new $this->url_array[$uri_sections[1]]['controller']();
-        call_user_func_array(
-            [$controller, $this->url_array[$uri_sections[1]]['method']],
-            $this->url_array[$uri_sections[1]]['args']
-        );
-    }
 
     public function __construct()
     {
@@ -69,12 +59,12 @@ class Router
             'new-password' => [
                 'controller' => NewPasswordControl::class,
                 'method' => 'showPage',
-                'args' => []
+                'args' => [$uri_sections[2]]
             ],
             'confirmation' => [
-                'controller' => ConfirmationControl::class,
+                'controller' => AccountConfirmationControl::class,
                 'method' => 'showPage',
-                'args' => []
+                'args' => [$uri_sections[2]]
             ],
             'login' => [
                 'controller' => AuthControl::class,
@@ -102,6 +92,16 @@ class Router
                 'method' => 'changeData',
                 'args' => []
             ]
+        );
+    }
+
+    public function get($uri)
+    {
+        $uri_sections = explode('/', $uri);
+        $controller = new $this->url_array[$uri_sections[1]]['controller']();
+        call_user_func_array(
+            [$controller, $this->url_array[$uri_sections[1]]['method']],
+            $this->url_array[$uri_sections[1]]['args']
         );
     }
 }

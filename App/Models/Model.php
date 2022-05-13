@@ -13,10 +13,10 @@ class Model
 
     public function getContent()
     {
-        $podcast_array = array();
+        $content_array = array();
         foreach ($this as $key => $value) {
-            $podcast_array += [$key => $value];
+            $content_array += [$key => $value];
         }
-        return $podcast_array;
+        return $content_array;
     }
 }

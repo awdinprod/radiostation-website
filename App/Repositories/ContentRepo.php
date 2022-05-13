@@ -2,12 +2,16 @@
 
 namespace App\Repositories;
 
+use App\Models\Comment;
 use Exception;
-use App\Models\Post;
-use App\Models\Podcast;
 
 class ContentRepo extends Repository
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function loadAllContent($content, $model_class)
     {
         $stm = $this->pdo->query("SELECT * FROM $content ORDER BY id DESC");
@@ -40,8 +44,16 @@ class ContentRepo extends Repository
         return $results;
     }
 
-    public function __construct()
+    public function getComments($content, $id)
     {
-        parent::__construct();
+        $stm = $this->pdo->query(
+            "SELECT * FROM comments WHERE content_type='$content' AND content_id=$id ORDER BY created_at"
+        );
+        $results = $stm->fetchAll();
+        foreach ($results as &$result) {
+            $result = new Comment($result);
+        }
+
+        return $results;
     }
 }

@@ -25,7 +25,7 @@ class View
     public function renderModalLogin()
     {
         ob_start();
-        require '../App/Templates/modal-login.php';
+        require '../App/Templates/login.php';
         $this->modal_login = ob_get_clean();
     }
 }

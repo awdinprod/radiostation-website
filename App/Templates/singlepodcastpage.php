@@ -34,10 +34,23 @@
                     </div>
                 </div>
             </div>
-
-            <hr class="post-divider">
         </div>
     </div>
+    <hr class="post-divider">
+    <?php if (!$comments) : ?>
+        <div class="post-temp">
+            <div class="post-title">No comments here...</div>
+        </div>
+    <?php else :
+        foreach ($comments as $one_comment) : ?>
+            <div class="post-temp">
+                <div class="post-texts">
+                    <p class="post-excerpt"><?php echo $one_comment['user_id']; ?>: </p>
+                    <p class="post-bodytext"><?php echo $one_comment['body_text']; ?></p>
+                </div>
+            </div>
+        <?php endforeach;
+    endif; ?>
 </div>
 
 <script type="text/javascript" src="/JS/audioplayer.js"></script>

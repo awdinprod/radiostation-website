@@ -3,15 +3,24 @@
 namespace App\Controllers;
 
 use App\Repositories\UserRepo;
-use App\Views\SignupView;
+use App\Views\NonContentView;
 
 class UserSettingsControl extends Controller
 {
+    public function __construct()
+    {
+        $this->repo = new UserRepo();
+        $this->user = new AuthControl();
+        $this->view = new NonContentView();
+    }
+
     public function changeData()
     {
-        if (isset($_POST)) {
+        if (isset($_POST['username']) || isset($_POST['email'])) {
             extract($_POST, EXTR_SKIP);
-            $user = $this->repo->findByToken($_COOKIE['token']);
+            if (isset($_COOKIE['token'])) {
+                $user = $this->repo->findByToken($_COOKIE['token']);
+            }
             if (!empty($user)) {
                 $this->repo->changeUserData($username, $email, $user['user_id']);
             } else {
@@ -22,21 +31,19 @@ class UserSettingsControl extends Controller
 
     public function showPage()
     {
-        $userdata = $this->user->getUserData();
-        ob_start();
-        if ($userdata != null) {
-            require '../App/Templates/user-settings-page.php';
-        } else {
-            require '../App/Templates/forbidden-page.php';
+        try {
+            $userdata = $this->user->getUserData();
+            if ($userdata != null) {
+                $page_url = '../App/Templates/user-settings-page.php';
+            } else {
+                $page_url = '../App/Templates/forbidden-page.php';
+            }
+            $exception_message = null;
+        } catch (\Exception $e) {
+            $userdata = null;
+            $exception_message = $e->getMessage();
+            $page_url = '../App/Templates/message-page.php';
         }
-        $page_temp = ob_get_clean();
-        $this->view->render($page_temp, $userdata);
-    }
-
-    public function __construct()
-    {
-        $this->repo = new UserRepo();
-        $this->user = new AuthControl();
-        $this->view = new SignupView();
+        $this->view->render($page_url, $userdata, $exception_message);
     }
 }

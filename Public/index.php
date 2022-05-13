@@ -6,4 +6,3 @@ use App\Route\Router;
 
 $router = new Router();
 $router->get($_SERVER['REQUEST_URI']);
-

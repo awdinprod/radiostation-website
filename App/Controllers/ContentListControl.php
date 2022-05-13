@@ -7,6 +7,13 @@ use App\Views\ContentListView;
 
 class ContentListControl extends Controller
 {
+    public function __construct()
+    {
+        $this->repo = new ContentRepo();
+        $this->user = new AuthControl();
+        $this->view = new ContentListView();
+    }
+
     public function getAllContent($content, $model_class)
     {
         return $this->repo->loadAllContent($content, $model_class);
@@ -21,12 +28,5 @@ class ContentListControl extends Controller
         }
         $userdata = $this->user->getUserData();
         $this->view->render($content_list_array, $content, $userdata);
-    }
-
-    public function __construct()
-    {
-        $this->repo = new ContentRepo();
-        $this->user = new AuthControl();
-        $this->view = new ContentListView();
     }
 }

@@ -3,12 +3,17 @@
 namespace App\Controllers;
 
 use App\Mailer\Mailer;
-use App\Models\User;
 use App\Repositories\UserRepo;
-use App\Views\SignupView;
+use App\Views\NonContentView;
 
 class SignupControl extends Controller
 {
+    public function __construct()
+    {
+        $this->repo = new UserRepo();
+        $this->user = new AuthControl();
+        $this->view = new NonContentView();
+    }
 
     public function signup($username, $email, $password, $conf_password)
     {
@@ -22,7 +27,7 @@ class SignupControl extends Controller
             throw new \Exception("Passwords do not match");
         }
 
-        $check = $this->repo->checkUser($username, $email);
+        $check = $this->repo->loadUser($username, $email);
         if (!empty($check)) {
             throw new \Exception("User already exists");
         }
@@ -35,35 +40,27 @@ class SignupControl extends Controller
 
     public function showPage()
     {
-        if (isset($_POST['reg_user'])) {
+        if (isset($_POST['username'], $_POST['email'], $_POST['password'], $_POST['conf_password'], $_POST['reg_user'])) {
             extract($_POST, EXTR_SKIP);
             try {
                 $this->signup($username, $email, $password, $conf_password);
-                ob_start();
-                require '../App/Templates/confirm-email.php';
-                $page_temp = ob_get_clean();
-                $userdata = $this->user->getUserData();
-                $this->view->render($page_temp, $userdata);
+                $page_url = '../App/Templates/confirm-email.php';
+                $exception_message = null;
             } catch (\Exception $e) {
-                ob_start();
-                require '../App/Templates/signup-page.php';
-                $page_temp = ob_get_clean();
-                $userdata = $this->user->getUserData();
-                $this->view->render($page_temp, $userdata);
+                $exception_message = $e->getMessage();
+                $page_url = '../App/Templates/signup-page.php';
             }
         } else {
-            ob_start();
-            require '../App/Templates/signup-page.php';
-            $page_temp = ob_get_clean();
-            $userdata = $this->user->getUserData();
-            $this->view->render($page_temp, $userdata);
+            $page_url = '../App/Templates/signup-page.php';
+            $exception_message = null;
         }
-    }
-
-    public function __construct()
-    {
-        $this->repo = new UserRepo();
-        $this->user = new AuthControl();
-        $this->view = new SignupView();
+        try {
+            $userdata = $this->user->getUserData();
+        } catch (\Exception $e) {
+            $userdata = null;
+            $exception_message = $e->getMessage();
+            $page_url = '../App/Templates/message-page.php';
+        }
+        $this->view->render($page_url, $userdata, $exception_message);
     }
 }
