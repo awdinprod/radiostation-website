@@ -1,6 +1,20 @@
-<div id="user-page" class="admin-page"></div>
+<h1>Settings</h1>
 
-<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js" crossorigin></script>
-<script src="/JS/user-page.js" type="text/babel"></script>
+<div class="main-block signup-page">
+    <?php if ($message != null) :?>
+        <span class="error-block">
+        <?php echo $message; ?>
+    </span>
+    <?php endif; ?>
+    <div class="user-settings">
+        <form class="settings-form" action="/api-user-changedata" method="post">
+            <label>Change username:
+                <input type="text" name="username" class="settings-input" placeholder="Enter new username">
+            </label>
+            <label>Change email:
+                <input type="email" name="email" class="settings-input" placeholder="Enter new email">
+            </label>
+            <button type="submit" class="submit-btn" name="change_user_data">Submit changes</button>
+        </form>
+    </div>
+</div>
