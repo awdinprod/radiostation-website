@@ -20,6 +20,9 @@ class SignupControl extends Controller
         if (empty($username)) {
             throw new \Exception("Username is required");
         }
+        if (!preg_match("/^[A-Za-z][A-Za-z0-9_]{5,31}$/", $username)) {
+            throw new \Exception('Please, create your username with a letter at the beginning and use only letters, numbers and "_" symbols');
+        }
         if (empty($password)) {
             throw new \Exception("Password is required");
         }
