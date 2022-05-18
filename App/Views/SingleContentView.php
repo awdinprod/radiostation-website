@@ -10,6 +10,9 @@ class SingleContentView extends View
         parent::renderModalLogin();
         parent::renderFooter();
         ob_start();
+        require '../App/Templates/comments.php';
+        $comments = ob_get_clean();
+        ob_start();
         require '../App/Templates/single' . substr($content, 0, -1) . 'page.php';
         $page_temp = ob_get_clean();
         require '../App/Templates/page.php';

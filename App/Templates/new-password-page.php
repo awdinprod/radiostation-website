@@ -8,7 +8,7 @@
     <?php endif; ?>
     <form method="post">
         <span class="fill-in-text">Please enter and confirm new password</span>
-        <hr class="post-divider">
+        <hr class="form-divider">
         <p><input type="password" class="auth-input" placeholder="Password" name="password" required></p>
         <p><input type="password" class="auth-input" placeholder="Confirm password" name="conf_password" required></p>
         <div>

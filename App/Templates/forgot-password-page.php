@@ -9,7 +9,7 @@
 
     <form method="post">
         <span class="fill-in-text">Please enter your email</span>
-        <hr class="post-divider">
+        <hr class="form-divider">
         <p><input type="email" class="auth-input" placeholder="e-mail" name="email" required></p>
         <div>
             <button class="login-btn" type="submit" name="recover_password">Recover password</button>

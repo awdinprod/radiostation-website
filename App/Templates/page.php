@@ -22,6 +22,5 @@ echo $page_temp;
 
 echo $this->footer;
 ?>
-    <script type="text/javascript" src="/JS/login-modal.js"></script>
 </body>
 </html>

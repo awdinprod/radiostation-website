@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Post;
+use App\Models\Podcast;
 use App\Repositories\ContentRepo;
 use App\Views\SingleContentView;
 
@@ -22,7 +23,7 @@ class SingleContentControl extends Controller
 
     public function getComments($content, $id)
     {
-        return $this->repo->getComments($content, $id);
+        return $this->repo->loadComments($content, $id);
     }
 
     public function showPage($content, $model_class, $id)

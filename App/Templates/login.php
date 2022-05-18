@@ -15,3 +15,5 @@
         </div>
     </form>
 </div>
+
+<script type="text/javascript" src="/JS/login-modal.js"></script>

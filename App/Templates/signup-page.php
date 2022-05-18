@@ -8,7 +8,7 @@
     <?php endif; ?>
     <form method="post">
         <span class="fill-in-text">Please fill in this form to create an account</span>
-        <hr class="post-divider">
+        <hr class="form-divider">
         <p><input type="text" class="auth-input" placeholder="Username" name="username" required></p>
         <p><input type="email" class="auth-input" placeholder="e-mail" name="email" required></p>
         <p><input type="password" class="auth-input" placeholder="Password" name="password" required></p>

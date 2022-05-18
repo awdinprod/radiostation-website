@@ -55,6 +55,7 @@ class AuthControl extends Controller
                 throw new \Exception("Wrong token");
             } else {
                 $this->user = array(
+                    'user_id' => $check['user_id'],
                     'username' => $check['username'],
                     'email' => $check['email'],
                     'role' => $check['role']

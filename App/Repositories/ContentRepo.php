@@ -44,10 +44,10 @@ class ContentRepo extends Repository
         return $results;
     }
 
-    public function getComments($content, $id)
+    public function loadComments($content, $id)
     {
         $stm = $this->pdo->query(
-            "SELECT * FROM comments WHERE content_type='$content' AND content_id=$id ORDER BY created_at"
+            "SELECT * FROM comments WHERE content_type='$content' AND content_id=$id ORDER BY created_at DESC"
         );
         $results = $stm->fetchAll();
         foreach ($results as &$result) {
@@ -55,5 +55,26 @@ class ContentRepo extends Repository
         }
 
         return $results;
+    }
+
+    public function addComment($comment_text, $content_type, $content_id, $userdata)
+    {
+        $sql = "INSERT INTO comments (body_text, content_type, content_id, user_id, username) VALUES (?, ?, ?, ?, ?)";
+        $stm = $this->pdo->prepare($sql);
+        $stm->execute([$comment_text, $content_type, $content_id, $userdata['user_id'], $userdata['username']]);
+    }
+
+    public function deleteComment($comment_id)
+    {
+        $sql = "DELETE FROM comments WHERE id=?";
+        $stm = $this->pdo->prepare($sql);
+        $stm->execute([$comment_id]);
+    }
+
+    public function editComment($comment_text, $comment_id)
+    {
+        $sql = "UPDATE comments SET body_text=? WHERE id=?";
+        $stm = $this->pdo->prepare($sql);
+        $stm->execute([$comment_text, $comment_id]);
     }
 }

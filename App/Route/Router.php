@@ -4,6 +4,7 @@ namespace App\Route;
 
 use App\Controllers\AccountConfirmationControl;
 use App\Controllers\AuthControl;
+use App\Controllers\CommentControl;
 use App\Controllers\ContentListControl;
 use App\Controllers\ForgotPasswordControl;
 use App\Controllers\MainPageControl;
@@ -21,87 +22,127 @@ class Router
     {
         $uri_sections = explode('/', $_SERVER['REQUEST_URI']);
         $this->url_array = array(
-            '' => [
+            '/' => [
                 'controller' => MainPageControl::class,
                 'method' => 'showPage',
-                'args' => [array('posts', 'podcasts'), array('App\Models\Post', 'App\Models\Podcast')]
+                'args' => [['posts', 'podcasts'], ['App\Models\Post', 'App\Models\Podcast']]
             ],
-            'posts' => [
+            '/posts' => [
+                'path_pattern' => '/posts/',
                 'controller' => ContentListControl::class,
                 'method' => 'showPage',
                 'args' => ['posts', 'App\Models\Post']
             ],
-            'podcasts' => [
+            '/podcasts' => [
                 'controller' => ContentListControl::class,
                 'method' => 'showPage',
                 'args' => ['podcasts', 'App\Models\Podcast']
             ],
-            'singlepost' => [
+            '/singlepost/' . $uri_sections[2] => [
                 'controller' => SingleContentControl::class,
                 'method' => 'showPage',
                 'args' => ['posts', 'App\Models\Post', $uri_sections[2]]
             ],
-            'singlepodcast' => [
+            '/singlepost/' . $uri_sections[2] . '/send_comment' => [
+                'controller' => CommentControl::class,
+                'method' => 'addComment',
+                'args' => ['posts', $uri_sections[2]]
+            ],
+            '/singlepost/' . $uri_sections[2] . '/' . $uri_sections[3] . '/edit' => [
+                'controller' => CommentControl::class,
+                'method' => 'showPage',
+                'args' => [$uri_sections[3]]
+            ],
+            '/singlepost/' . $uri_sections[2] . '/' . $uri_sections[3] . '/edit_comment' => [
+                'controller' => CommentControl::class,
+                'method' => 'editComment',
+                'args' => ['posts', $uri_sections[2], $uri_sections[3]]
+            ],
+            '/singlepost/' . $uri_sections[2] . '/' . $uri_sections[3] . '/delete_comment' => [
+                'controller' => CommentControl::class,
+                'method' => 'deleteComment',
+                'args' => ['posts', $uri_sections[2], $uri_sections[3]]
+            ],
+            '/singlepodcast/' . $uri_sections[2] => [
                 'controller' => SingleContentControl::class,
                 'method' => 'showPage',
                 'args' => ['podcasts', 'App\Models\Podcast', $uri_sections[2]]
             ],
-            'signup' => [
+            '/singlepodcast/' . $uri_sections[2] . '/send_comment' => [
+                'controller' => CommentControl::class,
+                'method' => 'addComment',
+                'args' => ['podcasts', $uri_sections[2]]
+            ],
+            '/singlepodcast/' . $uri_sections[2] . '/' . $uri_sections[3] . '/edit' => [
+                'controller' => CommentControl::class,
+                'method' => 'showPage',
+                'args' => []
+            ],
+            '/singlepodcast/' . $uri_sections[2] . '/' . $uri_sections[3] . '/edit_comment' => [
+                'controller' => CommentControl::class,
+                'method' => 'editComment',
+                'args' => ['podcasts', $uri_sections[2], $uri_sections[3]]
+            ],
+            '/singlepodcast/' . $uri_sections[2] . '/' . $uri_sections[3] . '/delete_comment' => [
+                'controller' => CommentControl::class,
+                'method' => 'deleteComment',
+                'args' => ['podcasts', $uri_sections[2], $uri_sections[3]]
+            ],
+            '/signup' => [
                 'controller' => SignupControl::class,
                 'method' => 'showPage',
                 'args' => []
             ],
-            'forgot-password' => [
+            '/forgot-password' => [
                 'controller' => ForgotPasswordControl::class,
                 'method' => 'showPage',
                 'args' => []
             ],
-            'new-password' => [
+            '/new-password/' . $uri_sections[2] => [
                 'controller' => NewPasswordControl::class,
                 'method' => 'showPage',
                 'args' => [$uri_sections[2]]
             ],
-            'confirmation' => [
+            '/confirmation/' . $uri_sections[2] => [
                 'controller' => AccountConfirmationControl::class,
                 'method' => 'showPage',
                 'args' => [$uri_sections[2]]
             ],
-            'login' => [
+            '/login' => [
                 'controller' => AuthControl::class,
                 'method' => 'login',
                 'args' => []
             ],
-            'logout' => [
+            '/logout' => [
                 'controller' => AuthControl::class,
                 'method' => 'logout',
                 'args' => []
             ],
-            'online-player' => [
+            '/online-player' => [
                 'controller' => PlayerControl::class,
                 'method' => 'showPage',
                 'args' => []
             ],
-            'user-settings' => [
+            '/user-settings' => [
                 'controller' => UserSettingsControl::class,
                 'method' => 'showPage',
                 'args' => []
             ],
-            'phpmyadmin' => [],
-            'api-user-changedata' => [
+            '/phpmyadmin' => [],
+            '/api-user-changedata' => [
                 'controller' => UserSettingsControl::class,
                 'method' => 'changeData',
                 'args' => []
-            ]
+            ],
         );
     }
 
     public function get($uri)
     {
-        $uri_sections = explode('/', $uri);
-        $controller = new $this->url_array[$uri_sections[1]]['controller']();
+        $controller = new $this->url_array[$uri]['controller']();
         call_user_func_array(
-            [$controller, $this->url_array[$uri_sections[1]]['method']],
-            $this->url_array[$uri_sections[1]]['args']
+            [$controller, $this->url_array[$uri]['method']],
+            $this->url_array[$uri]['args']
         );
     }
 }
