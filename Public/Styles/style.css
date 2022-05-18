@@ -596,7 +596,7 @@ p {
 
 .comment-buttons {
     display: grid;
-    height: auto;
+    height: 60px;
     margin: 5px 5px 5px 0;
 }
 
