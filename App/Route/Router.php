@@ -76,7 +76,7 @@ class Router
             '/singlepodcast/' . $uri_sections[2] . '/' . $uri_sections[3] . '/edit' => [
                 'controller' => CommentControl::class,
                 'method' => 'showPage',
-                'args' => []
+                'args' => [$uri_sections[3]]
             ],
             '/singlepodcast/' . $uri_sections[2] . '/' . $uri_sections[3] . '/edit_comment' => [
                 'controller' => CommentControl::class,
