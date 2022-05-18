@@ -139,10 +139,14 @@ class Router
 
     public function get($uri)
     {
-        $controller = new $this->url_array[$uri]['controller']();
-        call_user_func_array(
-            [$controller, $this->url_array[$uri]['method']],
-            $this->url_array[$uri]['args']
-        );
+        if (array_key_exists($uri, $this->url_array)) {
+            $controller = new $this->url_array[$uri]['controller']();
+            call_user_func_array(
+                [$controller, $this->url_array[$uri]['method']],
+                $this->url_array[$uri]['args']
+            );
+        } else {
+            echo "404: page not found";
+        }
     }
 }

@@ -2,17 +2,18 @@
 
 namespace App\Controllers;
 
-use App\Views\PlayerView;
+use App\Views\NonWebsiteView;
 
 class PlayerControl extends Controller
 {
     public function __construct()
     {
-        $this->view = new PlayerView();
+        $this->view = new NonWebsiteView();
     }
 
     public function showPage()
     {
-        $this->view->render();
+        $page_temp = '../App/Templates/player.html';
+        $this->view->render($page_temp);
     }
 }

@@ -26,8 +26,8 @@ body {
     color: #aeafea;
     text-align: center;
     font-weight: 500;
-    font-size: 25pt;
-    padding: 10px 20px;
+    font-size: 20pt;
+    padding: 5px 15px;
     text-decoration: none;
     text-transform: uppercase;
     border-right: 2px solid #222238;
@@ -46,11 +46,12 @@ body {
     color: #aeafea;
     text-align: center;
     font-weight: 500;
-    font-size: 25pt;
-    padding: 10px 20px;
+    font-size: 20pt;
+    padding: 5px 15px;
     text-decoration: none;
     text-transform: uppercase;
     border-left: 2px solid #222238;
+    cursor: pointer;
 }
 
 .login-header a:hover:not(.active) {
@@ -61,7 +62,7 @@ body {
     display: none;
     position: fixed;
     right: 0;
-    top: 62px;
+    top: 44px;
     background-color: #13131f;
     z-index: 1;
 }
@@ -71,12 +72,13 @@ body {
     color: #aeafea;
     text-align: center;
     font-weight: 500;
-    font-size: 25pt;
-    padding: 10px 20px;
+    font-size: 20pt;
+    padding: 5px 15px;
     text-decoration: none;
     text-transform: uppercase;
     border-bottom: 2px solid #222238;
     border-left: 2px solid #222238;
+    cursor: pointer;
 }
 
 .dropdown-content a:hover {
@@ -85,6 +87,12 @@ body {
 
 .login-header:hover .dropdown-content {
     display: block;
+}
+
+.center-block {
+    display: block;
+    text-align: center;
+    margin: 50px 0 20px;
 }
 
 .modal {
@@ -288,6 +296,38 @@ textarea:focus {
     background-color: #363657;
     animation-duration: 0.3s;
     animation-name: color-change;
+}
+
+.main-signup-btn {
+    margin: 30px 20px;
+    border: 2px solid #8e90ec;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #13131f;
+    width: auto;
+    height: 100px;
+    text-align: center;
+    font-size: 30pt;
+    font-family: "Fira Sans", sans-serif;
+    color: #8e90ec;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition-duration: 0.3s;
+}
+
+.main-signup-btn:hover {
+    background-color: #363657;
+    animation-duration: 0.3s;
+    animation-name: color-change;
+}
+
+.main-signup-text {
+    display: block;
+    text-align: center;
+    font-size: 25pt;
+    width: auto;
+    padding: 30px;
 }
 
 .submit-btn {
