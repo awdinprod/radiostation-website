@@ -38,7 +38,7 @@ class Mailer
         require '../App/Configuration/mailer-config.php';
 
         $subject = "Confirm your DAWN FM account";
-        $message = "Make a painless transition via this link: " . MAILER_URL . "/confirmation/" . $token;
+        $message = "Make a painless transition via this link: " . WEBSITE_URL . "/confirmation/" . $token;
 
         $this->initSendMail($subject, $message, $email);
     }
@@ -48,7 +48,7 @@ class Mailer
         require '../App/Configuration/mailer-config.php';
 
         $subject = "Recover your password from DAWN FM account";
-        $message = "Recover your password via this link: " . MAILER_URL . "/new-password/" . $token;
+        $message = "Recover your password via this link: " . WEBSITE_URL . "/new-password/" . $token;
 
         $this->initSendMail($subject, $message, $email);
     }

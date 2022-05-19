@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Mailer\Mailer;
 use App\Repositories\UserRepo;
-use App\Views\NonContentView;
+use App\Views\FormsAndMessagesView;
 
 class SignupControl extends Controller
 {
@@ -12,7 +12,7 @@ class SignupControl extends Controller
     {
         $this->repo = new UserRepo();
         $this->user = new AuthControl();
-        $this->view = new NonContentView();
+        $this->view = new FormsAndMessagesView();
     }
 
     public function signup($username, $email, $password, $conf_password)
@@ -21,7 +21,7 @@ class SignupControl extends Controller
             throw new \Exception("Username is required");
         }
         if (!preg_match("/^[A-Za-z][A-Za-z0-9_]{5,31}$/", $username)) {
-            throw new \Exception('Please, create your username with a letter at the beginning and use only letters, numbers and "_" symbols');
+            throw new \Exception('Please, come up with a username with a letter at the beginning and use between 6 and 32 letters, numbers and "_" symbols only');
         }
         if (empty($password)) {
             throw new \Exception("Password is required");

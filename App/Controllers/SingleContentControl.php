@@ -33,8 +33,8 @@ class SingleContentControl extends Controller
 
         $comments = $this->getComments($content, $id);
         $comments_array = array();
-        foreach ($comments as $unit) {
-            $comments_array[] = $unit->getContent();
+        foreach ($comments as $comment) {
+            $comments_array[] = $comment->getContent();
         }
 
         $userdata = $this->user->getUserData();

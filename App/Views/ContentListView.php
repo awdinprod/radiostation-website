@@ -4,9 +4,9 @@ namespace App\Views;
 
 class ContentListView extends View
 {
-    public function render($content_list_array, $content, $user)
+    public function render($content_list_array, $content, $userdata)
     {
-        parent::renderHeader($user);
+        parent::renderHeader($userdata);
         parent::renderModalLogin();
         parent::renderFooter();
         ob_start();

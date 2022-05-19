@@ -2,11 +2,11 @@
 
 namespace App\Views;
 
-class NonContentView extends View
+class FormsAndMessagesView extends View
 {
-    public function render($page_url, $user, $message = null)
+    public function render($page_url, $userdata, $message = null)
     {
-        parent::renderHeader($user);
+        parent::renderHeader($userdata);
         parent::renderModalLogin();
         parent::renderFooter();
         ob_start();

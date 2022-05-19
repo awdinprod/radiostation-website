@@ -4,9 +4,9 @@ namespace App\Views;
 
 class MainPageView extends View
 {
-    public function render($post_list_array, $podcast_list_array, $user)
+    public function render($post_list_array, $podcast_list_array, $userdata)
     {
-        parent::renderHeader($user);
+        parent::renderHeader($userdata);
         parent::renderModalLogin();
         parent::renderFooter();
         ob_start();

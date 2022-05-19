@@ -1,5 +1,5 @@
 <div class="comment-title">Comments:
-    <?php if ($user != null) : ?>
+    <?php if ($userdata != null) : ?>
         <a class="add-comment-button" id="commentBtn">Add a comment</a>
     <?php endif; ?>
 </div>
@@ -16,9 +16,9 @@
         </div>
         <div class="comment-buttons">
             <?php if (
-                $user['role'] == 'editor' ||
-                $user['role'] == 'admin' ||
-                $one_comment['user_id'] == $user['user_id']
+                $userdata['role'] == 'editor' ||
+                $userdata['role'] == 'admin' ||
+                $one_comment['user_id'] == $userdata['user_id']
             ) : ?>
                 <a href="<?php echo $_SERVER['REQUEST_URI'] . "/" . $one_comment['id'] . "/edit"?>"
                    class="edit-comment-button">Edit</a>
@@ -33,7 +33,7 @@
 endif; ?>
 
 </div>
-<?php if ($user != null) : ?>
+<?php if ($userdata != null) : ?>
     <div id="comment_modal" class="modal">
         <div class="modal-content">
             <span class="close_comment">&times;</span>

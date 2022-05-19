@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Repositories\UserRepo;
-use App\Views\NonContentView;
+use App\Views\FormsAndMessagesView;
 
 class NewPasswordControl extends Controller
 {
@@ -11,7 +11,7 @@ class NewPasswordControl extends Controller
     {
         $this->repo = new UserRepo();
         $this->user = new AuthControl();
-        $this->view = new NonContentView();
+        $this->view = new FormsAndMessagesView();
     }
 
     public function changePassword($password, $conf_password, $token)

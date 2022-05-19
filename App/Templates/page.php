@@ -12,7 +12,7 @@
 <?php
 echo $this->header;
 
-if ($user == null) : ?>
+if ($userdata == null) : ?>
 <div id="modal" class="modal">
     <?php echo $this->modal_login; ?>
 </div>

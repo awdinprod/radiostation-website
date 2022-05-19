@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Repositories\ContentRepo;
-use App\Views\NonContentView;
+use App\Views\FormsAndMessagesView;
 
 class CommentControl extends Controller
 {
@@ -11,7 +11,7 @@ class CommentControl extends Controller
     {
         $this->repo = new ContentRepo();
         $this->user = new AuthControl();
-        $this->view = new NonContentView();
+        $this->view = new FormsAndMessagesView();
     }
 
     public function addComment($content_type, $content_id)

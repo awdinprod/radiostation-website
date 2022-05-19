@@ -3,14 +3,14 @@
 namespace App\Controllers;
 
 use App\Repositories\UserRepo;
-use App\Views\NonContentView;
+use App\Views\FormsAndMessagesView;
 
 class AuthControl extends Controller
 {
     public function __construct()
     {
         $this->repo = new UserRepo();
-        $this->view = new NonContentView();
+        $this->view = new FormsAndMessagesView();
     }
 
     public function login()
@@ -18,13 +18,13 @@ class AuthControl extends Controller
         if (isset($_POST['username'], $_POST['password'], $_POST['login_user'])) {
             extract($_POST, EXTR_SKIP);
             try {
-                $check = $this->repo->loadByUsername($username);
-                if (!$check) {
+                $user = $this->repo->loadByUsername($username);
+                if (!$user) {
                     throw new \Exception("Username or password is incorrect");
-                } elseif ($check['status'] == "pending") {
+                } elseif ($user['status'] == "pending") {
                     throw new \Exception("Confirm your account");
-                } elseif ($check['password'] == md5($password)) {
-                    setcookie('token', $check['token']);
+                } elseif ($user['password'] == md5($password)) {
+                    setcookie('token', $user['token']);
                     header('Location: /');
                     die();
                 } else {
@@ -42,7 +42,6 @@ class AuthControl extends Controller
         unset($_COOKIE['token']);
         setcookie('token', null, -1, '/');
         header('Location: /');
-        session_destroy();
         die();
     }
 

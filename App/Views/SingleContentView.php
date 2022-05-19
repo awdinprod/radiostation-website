@@ -4,9 +4,9 @@ namespace App\Views;
 
 class SingleContentView extends View
 {
-    public function render($single_content_array, $content, $user, $comments)
+    public function render($single_content_array, $content, $userdata, $comments)
     {
-        parent::renderHeader($user);
+        parent::renderHeader($userdata);
         parent::renderModalLogin();
         parent::renderFooter();
         ob_start();

@@ -1,6 +1,6 @@
 <h1>Welcome To DAWN FM</h1>
 
-<?php if ($user == null) :?>
+<?php if ($userdata == null) :?>
 <div class="center-block">
     <a href="/signup" class="main-signup-btn">Sign up</a>
     <span class="main-signup-text">And you will be able to read, listen and comment everything here</span>

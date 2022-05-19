@@ -2,7 +2,7 @@
 
 namespace App\Views;
 
-class NonWebsiteView extends View
+class PlayerView extends View
 {
     public function render($page_temp)
     {

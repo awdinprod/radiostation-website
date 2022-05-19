@@ -8,7 +8,7 @@ class View
     protected $modal_login;
     protected $footer;
 
-    public function renderHeader($user)
+    public function renderHeader($userdata)
     {
         ob_start();
         require '../App/Templates/header.php';

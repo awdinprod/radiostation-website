@@ -126,7 +126,7 @@ class Router
             '/user-settings' => [
                 'controller' => UserSettingsControl::class,
                 'method' => 'showPage',
-                'args' => [null]
+                'args' => []
             ],
             '/phpmyadmin' => [],
             '/api-user-changedata' => [
