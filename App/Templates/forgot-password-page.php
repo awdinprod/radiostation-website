@@ -7,7 +7,7 @@
     </span>
     <?php endif; ?>
 
-    <form method="post">
+    <form action="<?php echo $_SERVER['REQUEST_URI'] . "/recover-password"; ?>" method="post">
         <span class="fill-in-text">Please enter your email</span>
         <hr class="form-divider">
         <p><input type="email" class="auth-input" placeholder="e-mail" name="email" required></p>

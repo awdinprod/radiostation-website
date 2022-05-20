@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Mailer\Mailer;
 use App\Repositories\UserRepo;
 use App\Views\FormsAndMessagesView;
+use App\Views\MessagesView;
 
 class ForgotPasswordControl extends Controller
 {
@@ -12,7 +13,6 @@ class ForgotPasswordControl extends Controller
     {
         $this->repo = new UserRepo();
         $this->user = new AuthControl();
-        $this->view = new FormsAndMessagesView();
     }
 
     public function mailRecoverPassword($email)
@@ -26,29 +26,35 @@ class ForgotPasswordControl extends Controller
         }
     }
 
+    public function recoverPassword()
+    {
+        $userdata = $this->user->getUserData();
+        $this->view = new MessagesView();
+        if (!isset($_POST['recover_password'], $_POST['email'])) {
+            throw new \Exception("You forgot to send something. Please return back and fill in this form again");
+        }
+        extract($_POST, EXTR_SKIP);
+        try {
+            $this->mailRecoverPassword($email);
+            $message = "Check your email for password reset link";
+        } catch (\Exception $e) {
+            $message = $e->getMessage();
+        }
+        $this->view->render($message, $userdata);
+    }
+
     public function showPage()
     {
-        if (isset($_POST['recover_password'], $_POST['email'])) {
-            extract($_POST, EXTR_SKIP);
-            try {
-                $this->mailRecoverPassword($email);
-                $page_url = '../App/Templates/check-email-password.php';
-                $exception_message = null;
-            } catch (\Exception $e) {
-                $exception_message = $e->getMessage();
-                $page_url = '../App/Templates/forgot-password-page.php';
-            }
-        } else {
-            $page_url = '../App/Templates/forgot-password-page.php';
-            $exception_message = null;
-        }
+        $userdata = null;
         try {
             $userdata = $this->user->getUserData();
+            $this->view = new FormsAndMessagesView();
+            $page_url = '../App/Templates/forgot-password-page.php';
+            $this->view->render($page_url, $userdata);
         } catch (\Exception $e) {
-            $userdata = null;
-            $exception_message = $e->getMessage();
-            $page_url = '../App/Templates/message-page.php';
+            $this->view = new MessagesView();
+            $message = $e->getMessage();
+            $this->view->render($message, $userdata);
         }
-        $this->view->render($page_url, $userdata, $exception_message);
     }
 }

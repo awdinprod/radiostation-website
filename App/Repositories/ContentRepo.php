@@ -57,6 +57,13 @@ class ContentRepo extends Repository
         return $results;
     }
 
+    public function loadUsernameForComments($id)
+    {
+        $stm = $this->pdo->query("SELECT username FROM users WHERE user_id=$id LIMIT 1");
+        $result = $stm->fetch();
+        return $result['username'];
+    }
+
     public function addComment($comment_text, $content_type, $content_id, $userdata)
     {
         $sql = "INSERT INTO comments (body_text, content_type, content_id, user_id, username) VALUES (?, ?, ?, ?, ?)";

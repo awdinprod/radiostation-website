@@ -93,14 +93,29 @@ class Router
                 'method' => 'showPage',
                 'args' => []
             ],
+            '/signup/send-signup' => [
+                'controller' => SignupControl::class,
+                'method' => 'signup',
+                'args' => []
+            ],
             '/forgot-password' => [
                 'controller' => ForgotPasswordControl::class,
                 'method' => 'showPage',
                 'args' => []
             ],
+            '/forgot-password/recover-password' => [
+                'controller' => ForgotPasswordControl::class,
+                'method' => 'recoverPassword',
+                'args' => []
+            ],
             '/new-password/' . $uri_sections[2] => [
                 'controller' => NewPasswordControl::class,
                 'method' => 'showPage',
+                'args' => [$uri_sections[2]]
+            ],
+            '/new-password/' . $uri_sections[2] . '/change-password' => [
+                'controller' => NewPasswordControl::class,
+                'method' => 'changePassword',
                 'args' => [$uri_sections[2]]
             ],
             '/confirmation/' . $uri_sections[2] => [

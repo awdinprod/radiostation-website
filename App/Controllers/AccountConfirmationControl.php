@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Repositories\UserRepo;
-use App\Views\FormsAndMessagesView;
+use App\Views\MessagesView;
 
 class AccountConfirmationControl extends Controller
 {
@@ -11,21 +11,18 @@ class AccountConfirmationControl extends Controller
     {
         $this->repo = new UserRepo();
         $this->user = new AuthControl();
-        $this->view = new FormsAndMessagesView();
+        $this->view = new MessagesView();
     }
 
     public function showPage($token)
     {
+        $userdata = $this->user->getUserData();
         try {
             $this->repo->updateStatus($token);
-            $page_url = '../App/Templates/confirmation-page.php';
-            $userdata = $this->user->getUserData();
-            $exception_message = null;
+            $message = "Your account is confirmed!";
         } catch (\Exception $e) {
-            $userdata = null;
-            $exception_message = $e->getMessage();
-            $page_url = '../App/Templates/message-page.php';
+            $message = $e->getMessage();
         }
-        $this->view->render($page_url, $userdata, $exception_message);
+        $this->view->render($message, $userdata);
     }
 }

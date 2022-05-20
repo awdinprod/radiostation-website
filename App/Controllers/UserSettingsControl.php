@@ -31,6 +31,8 @@ class UserSettingsControl extends Controller
                 } else {
                     throw new \Exception("Wrong token");
                 }
+            } else {
+                throw new \Exception("You didn't change anything");
             }
         } catch (\Exception $e) {
             $exception_message = $e->getMessage();

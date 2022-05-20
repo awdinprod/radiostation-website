@@ -26,6 +26,11 @@ class SingleContentControl extends Controller
         return $this->repo->loadComments($content, $id);
     }
 
+    public function loadUsernameForComments($id)
+    {
+        return $this->repo->loadUsernameForComments($id);
+    }
+
     public function showPage($content, $model_class, $id)
     {
         $single_content = $this->getSingleContent($content, $model_class, $id);
@@ -34,7 +39,9 @@ class SingleContentControl extends Controller
         $comments = $this->getComments($content, $id);
         $comments_array = array();
         foreach ($comments as $comment) {
-            $comments_array[] = $comment->getContent();
+            $comments_getter_array = $comment->getContent();
+            $comments_getter_array['username'] = $this->loadUsernameForComments($comments_getter_array['user_id']);
+            $comments_array[] = $comments_getter_array;
         }
 
         $userdata = $this->user->getUserData();

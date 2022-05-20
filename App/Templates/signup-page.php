@@ -6,7 +6,7 @@
         <?php echo $message; ?>
     </span>
     <?php endif; ?>
-    <form method="post">
+    <form action="<?php echo $_SERVER["REQUEST_URI"] . "/send-signup"?>" method="post">
         <span class="fill-in-text">Please fill in this form to create an account</span>
         <hr class="form-divider">
         <p><input type="text" class="auth-input" placeholder="Username" name="username" required></p>

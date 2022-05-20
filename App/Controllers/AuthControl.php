@@ -51,7 +51,7 @@ class AuthControl extends Controller
         if (isset($_COOKIE['token'])) {
             $check = $this->repo->findByToken($_COOKIE['token']);
             if (!$check) {
-                throw new \Exception("Wrong token");
+                throw new \Exception("Something wrong with your account token. Please login if you didn't yet");
             } else {
                 $this->user = array(
                     'user_id' => $check['user_id'],

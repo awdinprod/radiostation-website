@@ -6,7 +6,7 @@
         <?php echo $message; ?>
     </span>
     <?php endif; ?>
-    <form method="post">
+    <form action="<?php echo $_SERVER['REQUEST_URI'] . "/change-password"?>" method="post">
         <span class="fill-in-text">Please enter and confirm new password</span>
         <hr class="form-divider">
         <p><input type="password" class="auth-input" placeholder="Password" name="password" required></p>
